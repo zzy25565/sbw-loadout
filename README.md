@@ -139,3 +139,10 @@ python3 tools/validate_assets.py
 ```
 
 Python 工具需要 Pillow；Blender 脚本不调用减面操作。测试结果、已覆盖场景与边界见 `validation/验收记录.md`。
+
+## 依赖关系
+
+| 方向 | 项目 | 说明 |
+|---|---|---|
+| 运行依赖 | Superb Warfare (GPL-3.0) | 必需 |
+| 可选搭配 | [sbw-radar](https://github.com/zzy25565/sbw-radar) | 1.2.0 起的雷达弹（9M336）与雷达联动需要本模组 |
