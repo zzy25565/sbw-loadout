@@ -1,0 +1,22 @@
+{
+  "DisplayName": "KAB-1500Kr 电视制导航弹",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/kab1500kr.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/kab1500kr.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/kab1500kr/material_00.png",
+  "RenderProjectileModel": true,
+  "Slots": 3,
+  "Projectile": "superbwarfare:mk_82",
+  "Damage": 750,
+  "ExplosionDamage": 800,
+  "ExplosionRadius": 18,
+  "Velocity": 1.4,
+  "Burst": 1,
+  "Spread": 0.3,
+  "Guidance": "TV",
+  "SeekRange": 768,
+  "SeekAngle": 25,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

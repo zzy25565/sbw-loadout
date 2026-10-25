@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.zzy.loadout.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "VehicleMixin",
+    "SeekerTickMixin",
+    "ProjectileModelMixin",
+    "MissileModelSyncMixin"
+  ],
+  "client": [
+    "VehicleInputMixin",
+    "PodCameraMixin",
+    "ProjectileRenderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "item.sbw_loadout.ammo": "Custom Ammo",
+  "key.sbw_loadout.television_lock": "TV seeker lock / unlock",
+  "key.categories.sbw_loadout": "SBW Custom Loadout",
+  "key.sbw_loadout.pod_view": "Targeting pod view",
+  "item.sbw_loadout.ammo_kh29l": "kh29l",
+  "item.sbw_loadout.ammo_kab1500kr": "kab1500kr",
+  "item.sbw_loadout.ammo_kh59mk": "kh59mk",
+  "item.sbw_loadout.ammo_9m336_radar": "9M336 Radar Guided Missile"
+}

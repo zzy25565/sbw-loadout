@@ -1,0 +1,1 @@
+{"DisplayName": "laser_bomb", "Guidance": "Laser", "Projectile": "superbwarfare:mk_82", "Damage": 0, "ExplosionDamage": 0, "ExplosionRadius": 0, "Slots": 1, "Velocity": 1, "Spread": 0, "SeekRange": 256, "SeekAngle": 80, "TurnRate": 8, "LaserCode": 1688}

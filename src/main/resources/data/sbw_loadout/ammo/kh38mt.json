@@ -1,0 +1,19 @@
+{
+  "DisplayName": "Kh-38MT 空地导弹",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/kh38mt.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/kh38mt.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/kh38mt/material_00.png",
+  "Slots": 1,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 620,
+  "ExplosionDamage": 320,
+  "ExplosionRadius": 8,
+  "Velocity": 3.2,
+  "Burst": 1,
+  "Spread": 0.3,
+  "Guidance": "IR",
+  "SeekRange": 1024,
+  "SeekAngle": 20,
+  "Cooldown": 40
+}

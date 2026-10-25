@@ -1,0 +1,124 @@
+{
+  "kh38mt": {
+    "polygons": 13754,
+    "triangles": 13754,
+    "textures": [
+      {
+        "path": "textures/bedrock/ammo/kh38mt/material_00.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "decoded_diffuse_pixels_identical": true
+      },
+      {
+        "path": "textures/bedrock/ammo/kh38mt/material_01.png",
+        "size": [
+          4,
+          4
+        ],
+        "decoded_diffuse_pixels_identical": false
+      }
+    ],
+    "source_sha256": {
+      "su_kh_38mt.mtl": "428c62c3bc6a781695e700e985d4186811df67cbc10bef6e9037786e9c563855",
+      "kh38mt.obj": "c3c355b6be075bc59a01cad644dff59f67956e30d44a4640415841ca0c1a7667",
+      "textures/su_kh38_mt_missile_n_s.jpg": "5e25715e0cd9a7dfc0e9b8001278c2ac5c23d6de59d12f363b7160dcf750938a",
+      "textures/su_kh38_mt_missile_c.jpg": "c270dc3b3a9c88330e2a500c706bfb9dcb81cfe88364a872f554d31d67034107",
+      "textures/su_kh38_mt_missile_n_ao.jpg": "2079e3286b0616db92b833697944df6c8ada9e4aac4fbe4051bfb82647d1a2b0",
+      "textures/su_kh38_mt_missile_n_n.jpg": "ca34839bb56b4e16c629a88fc015670ababa6d45a0109d54f0b01c11c2653d8b"
+    }
+  },
+  "kh29td": {
+    "polygons": 14569,
+    "triangles": 14569,
+    "textures": [
+      {
+        "path": "textures/bedrock/ammo/kh29td/material_00.png",
+        "size": [
+          1024,
+          1024
+        ],
+        "decoded_diffuse_pixels_identical": true
+      },
+      {
+        "path": "textures/bedrock/ammo/kh29td/material_01.png",
+        "size": [
+          4,
+          4
+        ],
+        "decoded_diffuse_pixels_identical": false
+      }
+    ],
+    "source_sha256": {
+      "kh29td.obj": "6eb548a113fb463b637cae00abbcb87f3e0155daf294600085a144278e3567d7",
+      "su_kh_29td.mtl": "4091633c29b0c3effc7cd5e65f8efa64045045ebe49e9482265acdadc569d5f8",
+      "textures/su_kh_29_missile_n_s.jpg": "94a4df5305dcd766884c501864cd59c9fc0060bc53094a6b5c23e8399896257d",
+      "textures/su_kh_29_missile_n_ao.jpg": "239ac6a3bd41aa7e1140b9131e9f9fdfacc12fae6dfd68088e7a0d8f10b9c7d3",
+      "textures/su_kh_29_missile_c.jpg": "e3d6d4a1643c4c79c6ceb171ffdb6dab243c8b7937abdf6d0c9f318669f0c50f",
+      "textures/su_kh_29_missile_n_n.jpg": "e4ef7f7405d64fe6b3e49f8edc815206d7132d8036419754ecc48fff0061a663"
+    }
+  },
+  "kab500kr": {
+    "polygons": 9392,
+    "triangles": 9392,
+    "textures": [
+      {
+        "path": "textures/bedrock/ammo/kab500kr/material_00.png",
+        "size": [
+          1024,
+          512
+        ],
+        "decoded_diffuse_pixels_identical": true
+      },
+      {
+        "path": "textures/bedrock/ammo/kab500kr/material_01.png",
+        "size": [
+          4,
+          4
+        ],
+        "decoded_diffuse_pixels_identical": false
+      },
+      {
+        "path": "textures/bedrock/ammo/kab500kr/material_02.png",
+        "size": [
+          256,
+          256
+        ],
+        "decoded_diffuse_pixels_identical": false
+      }
+    ],
+    "source_sha256": {
+      "su_kab_500kr.mtl": "41ecd25780418ade9c47c0dfa827cebc90a58af6de496cd328f4d6e8e3a2b462",
+      "kab500kr.obj": "1797c658de74eb489512fae8b6007eaa694c3c430c30472f8b3fd4acb36a99bf",
+      "textures/su_kab_500kr_n_n.jpg": "4e2a8643e5b5b521ae6fd9054cbafaca00eae77b743929c1fa92c59c0c192f6e",
+      "textures/su_kab_500kr_n_ao.jpg": "ac78c3f6f614bb27e56adae4b4a7dabb39b0159342b78f970f37e60f9d91a52b",
+      "textures/su_kh_29_missile_grid_c_a.png": "6b422827098b29d374f2b3a0d456b8e24e77c28f2158f6e444e47ad0b13829ae",
+      "textures/su_kh_29_missile_grid_c.jpg": "0fcfe0b0a13511841894409766c693171394d8c0e0f1301ff9384be2a30d5498",
+      "textures/su_kab_500kr_n_s.jpg": "2ad625fd232cb944333ab5478922fdf86351b447444d13a14aa5527e5d09d46f",
+      "textures/su_kab_500kr_c.jpg": "fb9c55e3e27243436f0839d19bd28ffb4b4d81e1def3f298c6a6386dae15c2f1"
+    }
+  },
+  "x555": {
+    "polygons": 9557,
+    "triangles": 19282,
+    "textures": [
+      {
+        "path": "textures/bedrock/ammo/x555/material_00.png",
+        "size": [
+          4096,
+          4096
+        ],
+        "decoded_diffuse_pixels_identical": true
+      }
+    ],
+    "source_sha256": {
+      "x555.fbx": "34afd427ea83c012c70eadc0cce7326a11d1ab047615452a3cf4cf089f3cc4f7",
+      "textures/X-555_ao.png": "99fecf4bd059ba210a80951c98542c931eeaadab64cdad81c9852f31512ad90b",
+      "textures/X-555_color.png": "dfe6dad8e89e445e5d17ff68b2659ae56df2421a583f1225bd51212806e48501",
+      "textures/X-555_roughness.png": "a4436be6afb7503b3e3f1855e2911acd9907d62cb4f51a3c4bdf21beb5c2483d",
+      "textures/X-555_normal.png": "007eb144ca96ebcf95a6aead6c4f3ad365d127a382f8e0489e04a8dd58b64f55",
+      "textures/X-555_metallic.png": "c8b2c41cbd41260831bec40b15e02e2b437d45f246817ca7550d154b17e91f7d"
+    }
+  }
+}

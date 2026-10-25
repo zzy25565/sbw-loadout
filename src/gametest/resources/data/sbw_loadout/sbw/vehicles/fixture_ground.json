@@ -1,0 +1,1 @@
+{"Type": "Car", "MaxHealth": 100, "Seats": [{"Position": [0, 1, 0], "Weapons": []}], "Loadout": {"Slots": 6, "Allowed": ["sbw_loadout:kh38mt", "sbw_loadout:kh29td", "sbw_loadout:kab500kr", "sbw_loadout:x555"], "Default": ["sbw_loadout:kh38mt"]}}

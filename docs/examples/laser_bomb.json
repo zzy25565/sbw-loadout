@@ -1,0 +1,18 @@
+{
+  "DisplayName": "laser_bomb 接入示例",
+  "Category": "Bomb",
+  "Projectile": "superbwarfare:mk_82",
+  "Guidance": "Laser",
+  "LaserCode": 1688,
+  "TurnRate": 4,
+  "SeekRange": 1024,
+  "SeekAngle": 30,
+  "Velocity": 2.5,
+  "Damage": 300,
+  "ExplosionDamage": 200,
+  "ExplosionRadius": 5,
+  "Slots": 1,
+  "Burst": 1,
+  "Spread": 0,
+  "Cooldown": 40
+}

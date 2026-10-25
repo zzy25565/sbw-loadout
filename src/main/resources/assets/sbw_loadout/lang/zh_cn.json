@@ -1,0 +1,10 @@
+{
+  "item.sbw_loadout.ammo": "自定义弹药",
+  "key.sbw_loadout.television_lock": "电视导引头锁定 / 取消",
+  "key.categories.sbw_loadout": "SBW 自定义挂载",
+  "key.sbw_loadout.pod_view": "光电吊舱视角",
+  "item.sbw_loadout.ammo_kh29l": "Kh-29L 激光制导导弹",
+  "item.sbw_loadout.ammo_kab1500kr": "KAB-1500Kr 电视制导航弹",
+  "item.sbw_loadout.ammo_kh59mk": "Kh-59MK 电视制导导弹",
+  "item.sbw_loadout.ammo_9m336_radar": "9M336 雷达制导导弹"
+}

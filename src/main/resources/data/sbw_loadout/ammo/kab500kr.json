@@ -1,0 +1,19 @@
+{
+  "DisplayName": "KAB-500Kr 制导炸弹",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/kab500kr.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/kab500kr.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/kab500kr/material_00.png",
+  "Slots": 2,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 480,
+  "ExplosionDamage": 420,
+  "ExplosionRadius": 11,
+  "Velocity": 1.4,
+  "Burst": 1,
+  "Spread": 0.3,
+  "Guidance": "TV",
+  "SeekRange": 512,
+  "SeekAngle": 20,
+  "Cooldown": 40
+}

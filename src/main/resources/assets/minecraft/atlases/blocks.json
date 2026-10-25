@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kh38mt",
+      "sprite": "sbw_loadout:bedrock/ammo/kh38mt/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kh29td",
+      "sprite": "sbw_loadout:bedrock/ammo/kh29td/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kab500kr",
+      "sprite": "sbw_loadout:bedrock/ammo/kab500kr/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/x555",
+      "sprite": "sbw_loadout:bedrock/ammo/x555/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kh29l",
+      "sprite": "sbw_loadout:bedrock/ammo/kh29l/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kab1500kr",
+      "sprite": "sbw_loadout:bedrock/ammo/kab1500kr/material_00"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "sbw_loadout:overlay/weapon/icons/kh59mk",
+      "sprite": "sbw_loadout:bedrock/ammo/kh59mk/material_00"
+    }
+  ]
+}

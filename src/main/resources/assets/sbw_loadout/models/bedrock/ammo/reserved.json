@@ -1,0 +1,8 @@
+{
+  "kh58ushk": {
+    "model": "sbw_loadout:models/bedrock/ammo/kh58ushk.geo.json",
+    "texture": "sbw_loadout:textures/bedrock/ammo/kh58ushk/material_00.png",
+    "registered": false,
+    "reason": "Reserved for future anti-radiation guidance"
+  }
+}

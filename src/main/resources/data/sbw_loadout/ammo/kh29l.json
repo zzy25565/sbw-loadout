@@ -1,0 +1,22 @@
+{
+  "DisplayName": "Kh-29L 激光制导导弹",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/kh29l.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/kh29l.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/kh29l/material_00.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 560,
+  "ExplosionDamage": 300,
+  "ExplosionRadius": 7,
+  "Velocity": 2.6,
+  "Burst": 1,
+  "Spread": 0.3,
+  "Guidance": "LASER",
+  "SeekRange": 768,
+  "SeekAngle": 25,
+  "TurnRate": 5,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

@@ -1,0 +1,18 @@
+{
+  "DisplayName": "tv_missile 接入示例",
+  "Category": "Missile",
+  "Projectile": "superbwarfare:agm_65",
+  "Guidance": "TV",
+  "LaserCode": 1688,
+  "TurnRate": 5,
+  "SeekRange": 1024,
+  "SeekAngle": 30,
+  "Velocity": 2.5,
+  "Damage": 300,
+  "ExplosionDamage": 200,
+  "ExplosionRadius": 5,
+  "Slots": 1,
+  "Burst": 1,
+  "Spread": 0,
+  "Cooldown": 40
+}

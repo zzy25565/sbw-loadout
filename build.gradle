@@ -1,0 +1,36 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.80'
+}
+group = 'cn.zzy'
+version = '1.2.0'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+repositories { mavenCentral(); maven { url = 'https://thedarkcolour.github.io/KotlinForForge/' } }
+neoForge {
+    version = providers.gradleProperty('neoVersion').getOrElse('21.1.248')
+    runs {
+        client { client(); if(project.hasProperty("guidancesmoke")) jvmArgument "-Dsbw.guidanceSmoke=true"; if ((project.hasProperty("smoke") || project.hasProperty("guidancesmoke"))) { programArgument "--width"; programArgument "1280"; programArgument "--height"; programArgument "800" } }
+        server { server(); programArgument '--nogui' }
+        gameTestServer { type = 'gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', 'sbw_loadout' }
+    }
+    mods { sbw_loadout { sourceSet sourceSets.main } }
+}
+if (project.hasProperty('gametest')) {
+    sourceSets.main.java.srcDir('src/gametest/java')
+    sourceSets.main.resources.srcDir('src/gametest/resources')
+}
+if (project.hasProperty('guidancesmoke')) sourceSets.main.java.srcDir('src/guidancesmoke/java')
+if (project.hasProperty('smoke')) sourceSets.main.java.srcDir('src/smoke/java')
+dependencies {
+    implementation 'thedarkcolour:kotlinforforge-neoforge:5.10.0'
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'], exclude: ['superbwarfare-*.jar'])
+    compileOnly files('libs/superbwarfare-' + providers.gradleProperty('sbwVersion').getOrElse('0.8.9.1') + '.jar')
+    runtimeOnly files('libs/superbwarfare-' + providers.gradleProperty('sbwVersion').getOrElse('0.8.9.1') + '.jar')
+}
+if(project.hasProperty('radarCompat')) {
+ dependencies { runtimeOnly files('../sbw_radar/build/libs/sbw_radar-1.3.0.jar') }
+}
+if(project.hasProperty('sporeCompat')) {
+ dependencies { runtimeOnly files('../../work/spore_220_20260330/build/libs/spore-1.0.0.jar') }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

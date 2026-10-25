@@ -1,0 +1,19 @@
+{
+  "DisplayName": "X-555 空射巡航导弹",
+  "Category": "CruiseMissile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/x555.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/x555.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/x555/material_00.png",
+  "Slots": 3,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 900,
+  "ExplosionDamage": 700,
+  "ExplosionRadius": 16,
+  "Velocity": 2.0,
+  "Burst": 1,
+  "Spread": 0.3,
+  "Guidance": "INS+GNSS+EO",
+  "SeekRange": 2048,
+  "SeekAngle": 20,
+  "Cooldown": 40
+}

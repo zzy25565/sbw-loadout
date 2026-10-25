@@ -1,0 +1,28 @@
+{
+  "DisplayName": "9M336 雷达制导导弹",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/item/9m336_radar.png",
+  "Model": "sbw_loadout:models/bedrock/projectile/9m336_radar.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/projectile/9m336_radar.png",
+  "Slots": 1,
+  "Projectile": "sbw_loadout:9m336_radar",
+  "Damage": 260,
+  "ExplosionDamage": 90,
+  "ExplosionRadius": 6,
+  "Velocity": 2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "RADAR",
+  "SeekRange": 512,
+  "SeekAngle": 35,
+  "Cooldown": 40,
+  "TurnRate": 5,
+  "RenderProjectileModel": false,
+  "Radar": {
+    "ClimbTicks": 12,
+    "ClimbUpDeg": 10,
+    "TerminalRange": 96,
+    "MaxChannels": 2,
+    "LostTimeout": 120
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "kh38mt": {
+    "source_polygons": 13754,
+    "triangles": 13754,
+    "vertices": 12136,
+    "length_m": 4.2,
+    "source_axis": 0,
+    "uniform_scale": 1.006639057356576,
+    "source_bounds": [
+      [
+        -2.0861499309539795,
+        -0.2001200169324875,
+        -0.2001200169324875
+      ],
+      [
+        2.0861499309539795,
+        0.2001200169324875,
+        0.2135400027036667
+      ]
+    ],
+    "materials": {
+      "1db0a800-e29e-4773-98f3-76ff6773b53f": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh38mt/material_00.png",
+        "source_color": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/kh38mt/textures/su_kh38_mt_missile_c.jpg",
+        "source_alpha": null,
+        "opacity": 1.0,
+        "rgba": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "translucent": false
+      },
+      "851d92fe-55e7-4c06-85ef-345a9a7c3a11": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh38mt/material_01.png",
+        "source_color": null,
+        "source_alpha": null,
+        "opacity": 0.6000000238418579,
+        "rgba": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "translucent": true
+      }
+    },
+    "modifiers_used": [],
+    "decimation": false,
+    "texture_resizing": false
+  },
+  "kh29td": {
+    "source_polygons": 14569,
+    "triangles": 14569,
+    "vertices": 13990,
+    "length_m": 3.9,
+    "source_axis": 0,
+    "uniform_scale": 0.9867821816581342,
+    "source_bounds": [
+      [
+        -1.994670033454895,
+        -0.39368003606796265,
+        -0.39368003606796265
+      ],
+      [
+        1.95756995677948,
+        0.39368003606796265,
+        0.39368003606796265
+      ]
+    ],
+    "materials": {
+      "3f136a58-bb04-4507-8888-ea1bbd4eb642": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh29td/material_00.png",
+        "source_color": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/kh29td/textures/su_kh_29_missile_c.jpg",
+        "source_alpha": null,
+        "opacity": 1.0,
+        "rgba": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "translucent": false
+      },
+      "bc3ea181-0c31-4cac-a837-57f955f373fe": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh29td/material_01.png",
+        "source_color": null,
+        "source_alpha": null,
+        "opacity": 0.10000000149011612,
+        "rgba": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "translucent": true
+      }
+    },
+    "modifiers_used": [],
+    "decimation": false,
+    "texture_resizing": false
+  },
+  "kab500kr": {
+    "source_polygons": 9392,
+    "triangles": 9392,
+    "vertices": 9634,
+    "length_m": 3.05,
+    "source_axis": 0,
+    "uniform_scale": 0.9982620385849315,
+    "source_bounds": [
+      [
+        -1.4185700416564941,
+        -0.2751200199127197,
+        -0.4833700358867645
+      ],
+      [
+        1.63673996925354,
+        0.27511999011039734,
+        0.06687001883983612
+      ]
+    ],
+    "materials": {
+      "8535cbb4-5380-49e5-a9c3-498574ade0da": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab500kr/material_00.png",
+        "source_color": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/kab500kr/textures/su_kab_500kr_c.jpg",
+        "source_alpha": null,
+        "opacity": 1.0,
+        "rgba": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "translucent": false
+      },
+      "e2dc7782-e352-40cc-a5bf-3fbcfe65fd8f": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab500kr/material_01.png",
+        "source_color": null,
+        "source_alpha": null,
+        "opacity": 0.10000000149011612,
+        "rgba": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "translucent": true
+      },
+      "203f93a3-2997-4eb9-a706-76099ab15c7d": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab500kr/material_02.png",
+        "source_color": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/kab500kr/textures/su_kh_29_missile_grid_c.jpg",
+        "source_alpha": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/kab500kr/textures/su_kh_29_missile_grid_c_a.png",
+        "opacity": 1.0,
+        "rgba": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "translucent": true
+      }
+    },
+    "modifiers_used": [],
+    "decimation": false,
+    "texture_resizing": false
+  },
+  "x555": {
+    "source_polygons": 9557,
+    "triangles": 19282,
+    "vertices": 10428,
+    "length_m": 6.0,
+    "source_axis": 1,
+    "uniform_scale": 1.4428644080319049,
+    "source_bounds": [
+      [
+        -1.0860333442687988,
+        -0.42617067694664,
+        -0.4555736780166626
+      ],
+      [
+        1.0860333442687988,
+        3.732224225997925,
+        0.42740610241889954
+      ]
+    ],
+    "materials": {
+      "HA-555": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/x555/material_00.png",
+        "source_color": "/Users/annichen/zzy/work/sbw_custom_mount_package/models/x555/textures/X-555_color.png",
+        "source_alpha": null,
+        "opacity": 1.0,
+        "rgba": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "translucent": false
+      }
+    },
+    "modifiers_used": [],
+    "decimation": false,
+    "texture_resizing": false
+  }
+}

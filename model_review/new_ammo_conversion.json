@@ -1,0 +1,284 @@
+{
+  "kh29l": {
+    "source_sha256": "77556368608ef038aed2a7be7381ac030ff3eb940f8a3c39bd2d9110aea42de7",
+    "source_vertices": 13349,
+    "source_polygons": 14337,
+    "covered_source_polygons": 14337,
+    "triangles": 14337,
+    "length_m": 3.89520001411438,
+    "source_bounds": [
+      [
+        -1.957800030708313,
+        -0.39369997382164,
+        -0.39369997382164
+      ],
+      [
+        1.937399983406067,
+        0.39369997382164,
+        0.39369997382164
+      ]
+    ],
+    "rotation": "game=(sourceY,sourceZ,sourceX); det=+1",
+    "uniform_scale": 1,
+    "decimation": false,
+    "images_in_source": 0,
+    "texture_resizing": false,
+    "corner_sha256": "b395db4ad22144ac7e1d3f690549e8b5a4010a60cc9c1db0ad1307a8813a83cc",
+    "export_corner_sha256": "b395db4ad22144ac7e1d3f690549e8b5a4010a60cc9c1db0ad1307a8813a83cc",
+    "materials": {
+      "unknown_0": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh29l/material_00.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      },
+      "unknown_1": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh29l/material_01.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      },
+      "unknown_2": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh29l/material_02.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      }
+    },
+    "playable": true
+  },
+  "kab1500kr": {
+    "source_sha256": "cc63f1671fbb19e435c9fab50b5694ac04bb80c8d169465cdea9a922023c49e7",
+    "source_vertices": 33717,
+    "source_polygons": 33967,
+    "covered_source_polygons": 33967,
+    "triangles": 33967,
+    "length_m": 4.648100137710571,
+    "source_bounds": [
+      [
+        -1.926300048828125,
+        -0.30720001459121704,
+        -0.6449000239372253
+      ],
+      [
+        2.7218000888824463,
+        0.30719998478889465,
+        0.020100001245737076
+      ]
+    ],
+    "rotation": "game=(sourceY,sourceZ,sourceX); det=+1",
+    "uniform_scale": 1,
+    "decimation": false,
+    "images_in_source": 0,
+    "texture_resizing": false,
+    "corner_sha256": "9c9519b43091be6158cca67fcf165a1346531e5366a85608eb198f803a201a25",
+    "export_corner_sha256": "9c9519b43091be6158cca67fcf165a1346531e5366a85608eb198f803a201a25",
+    "materials": {
+      "unknown_0": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab1500kr/material_00.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      },
+      "unknown_2": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab1500kr/material_01.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      },
+      "unknown_1": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab1500kr/material_02.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      },
+      "unknown_3": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kab1500kr/material_03.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      }
+    },
+    "playable": true
+  },
+  "kh59mk": {
+    "source_sha256": "493f7a14c39e1a9e58359f7c8912d40e41930826a391d9f521dae31e75836914",
+    "source_vertices": 18878,
+    "source_polygons": 23740,
+    "covered_source_polygons": 23740,
+    "triangles": 23740,
+    "length_m": 5.69980001449585,
+    "source_bounds": [
+      [
+        -2.598599910736084,
+        -0.460500031709671,
+        -0.673799991607666
+      ],
+      [
+        3.1012001037597656,
+        0.460500031709671,
+        0.460500031709671
+      ]
+    ],
+    "rotation": "game=(sourceY,sourceZ,sourceX); det=+1",
+    "uniform_scale": 1,
+    "decimation": false,
+    "images_in_source": 0,
+    "texture_resizing": false,
+    "corner_sha256": "9ffee372f3fd55cfe35b37774fa6487dd644bb3e24edd7f4d656015f236d5323",
+    "export_corner_sha256": "9ffee372f3fd55cfe35b37774fa6487dd644bb3e24edd7f4d656015f236d5323",
+    "materials": {
+      "unknown_0": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh59mk/material_00.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      }
+    },
+    "playable": true
+  },
+  "kh58ushk": {
+    "source_sha256": "80b24a198dbbfb5d58699a5367e8d56a7b7759239ef3cdeba563a858d9030ee4",
+    "source_vertices": 20940,
+    "source_polygons": 24766,
+    "covered_source_polygons": 24766,
+    "triangles": 24766,
+    "length_m": 4.193099856376648,
+    "source_bounds": [
+      [
+        -1.9759999513626099,
+        -0.2020999938249588,
+        -0.8604000210762024
+      ],
+      [
+        2.217099905014038,
+        0.2020999938249588,
+        0.334199994802475
+      ]
+    ],
+    "rotation": "game=(sourceY,sourceZ,sourceX); det=+1",
+    "uniform_scale": 1,
+    "decimation": false,
+    "images_in_source": 0,
+    "texture_resizing": false,
+    "corner_sha256": "9a2f67c3d0520e39adbdddbe26b7ae0f33fa88051f695a8defa243a96fdb2d12",
+    "export_corner_sha256": "9a2f67c3d0520e39adbdddbe26b7ae0f33fa88051f695a8defa243a96fdb2d12",
+    "materials": {
+      "unknown_0": {
+        "texture": "sbw_loadout:textures/bedrock/ammo/kh58ushk/material_00.png",
+        "rgba_linear": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "rgba_srgb8": [
+          231,
+          231,
+          231,
+          255
+        ],
+        "alpha": 1.0,
+        "metallic": 0.0,
+        "roughness": 1.0
+      }
+    },
+    "playable": false
+  }
+}

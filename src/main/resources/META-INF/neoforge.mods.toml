@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="GPL-3.0-only; assets see ASSET_SOURCES.md"
+[[mods]]
+modId="sbw_loadout"
+version="1.2.0"
+displayName="SBW Custom Loadout"
+description="Data driven aircraft loadouts with transactional inventory editing and full detail ammo models."
+[[mixins]]
+config="sbw_loadout.mixins.json"
+[[dependencies.sbw_loadout]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.240,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sbw_loadout]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sbw_loadout]]
+modId="superbwarfare"
+type="required"
+versionRange="[0.8.9.1,0.8.9.3)"
+ordering="AFTER"
+side="BOTH"
