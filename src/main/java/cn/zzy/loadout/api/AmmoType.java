@@ -26,7 +26,8 @@ public record AmmoType(
     int laserCode,
     double turnRate,
     boolean renderProjectileModel,
-    RadarSettings radar) {
+    RadarSettings radar,
+    CruiseSettings cruise) {
   public record RadarSettings(int climbTicks, double climbUpDeg, double terminalRange,
                               int maxChannels, int lostTimeout) {
     public static final RadarSettings DEFAULT = new RadarSettings(12, 10, 96, 2, 120);
@@ -51,6 +52,17 @@ public record AmmoType(
   }
 
   /** 保留旧构造接口，已有第三方弹种无需修改。 */
+  public AmmoType(String id, String displayName, String category, String icon, String model,
+      String texture, int slots, String projectile, double damage, double explosionDamage,
+      double explosionRadius, double velocity, int burst, double spread, String guidance,
+      double seekRange, double seekAngle, int cooldown, int laserCode, double turnRate,
+      boolean renderProjectileModel, RadarSettings radar) {
+    this(id,displayName,category,icon,model,texture,slots,projectile,damage,explosionDamage,
+        explosionRadius,velocity,burst,spread,guidance,seekRange,seekAngle,cooldown,laserCode,
+        turnRate,renderProjectileModel,radar,CruiseSettings.NONE);
+  }
+
+  /** 保留最初版本的构造接口。 */
   public AmmoType(
     String id,
     String displayName,
@@ -78,6 +90,13 @@ public record AmmoType(
 
   public AmmoType {
     java.util.Objects.requireNonNull(radar);
+    java.util.Objects.requireNonNull(cruise);
+    if (cruise.enabled() && (!projectile.equals("sbw_loadout:cruise_missile")
+        || !(guidance.equalsIgnoreCase("TV")
+             || guidance.toUpperCase(java.util.Locale.ROOT).startsWith("INS"))))
+      throw new IllegalArgumentException("Low-altitude flight requires the cruise projectile and TV/INS guidance");
+    if (projectile.equals("sbw_loadout:cruise_missile") && !cruise.enabled())
+      throw new IllegalArgumentException("Cruise projectile requires a Cruise profile");
     ResourceLocation.parse(id);
     ResourceLocation.parse(projectile);
     ResourceLocation.parse(icon);
@@ -144,7 +163,8 @@ public record AmmoType(
         i(j, "LaserCode", 1688),
         d(j, "TurnRate", s(j, "Category", "Missile").equalsIgnoreCase("GuidedBomb") ? 4 : 5),
         j.has("RenderProjectileModel") && j.get("RenderProjectileModel").getAsBoolean(),
-        RadarSettings.parse(j));
+        RadarSettings.parse(j),
+        CruiseSettings.parse(j));
   }
 
   public JsonObject json() {
@@ -170,6 +190,7 @@ public record AmmoType(
     j.addProperty("TurnRate", turnRate);
     j.addProperty("RenderProjectileModel", renderProjectileModel);
     if (guidance.equalsIgnoreCase("RADAR")) j.add("Radar", radar.json());
+    if (cruise.enabled()) j.add("Cruise", cruise.json());
     return j;
   }
 

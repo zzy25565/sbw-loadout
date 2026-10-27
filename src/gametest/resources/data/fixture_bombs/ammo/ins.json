@@ -1,0 +1,1 @@
+{"DisplayName":"coordinate bomb reusing missile fixture","Category":"GuidedBomb","Guidance":"INS+GNSS","Projectile":"superbwarfare:agm_65","Damage":0,"ExplosionDamage":0,"ExplosionRadius":0,"Velocity":1,"Spread":4,"SeekRange":256,"SeekAngle":80,"TurnRate":8}

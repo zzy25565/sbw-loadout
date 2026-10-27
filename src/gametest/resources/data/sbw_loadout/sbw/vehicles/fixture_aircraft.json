@@ -25,7 +25,20 @@
       "sbw_loadout:kh29l",
       "sbw_loadout:kab1500kr",
       "sbw_loadout:kh59mk",
-      "sbw_loadout:9m336_radar"
+      "sbw_loadout:9m336_radar",
+      "fixture_bombs:plain",
+      "fixture_bombs:tv",
+      "fixture_bombs:laser",
+      "fixture_bombs:ins",
+      "sbw_loadout:fx1400",
+      "sbw_loadout:gbu31",
+      "sbw_loadout:gbu38",
+      "sbw_loadout:gbu53b",
+      "sbw_loadout:gbu58",
+      "sbw_loadout:kab1500l",
+      "sbw_loadout:kab500l",
+      "sbw_loadout:ls500j",
+      "sbw_loadout:spice1000"
     ],
     "Default": [
       "sbw_loadout:kh38mt"

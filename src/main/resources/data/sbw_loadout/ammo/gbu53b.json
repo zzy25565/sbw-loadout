@@ -1,0 +1,22 @@
+{
+  "DisplayName": "GBU-53/B（游戏电视制导）",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/gbu53b.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/gbu53b.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:mk_82",
+  "Damage": 66.33,
+  "ExplosionDamage": 66.33,
+  "ExplosionRadius": 10.28,
+  "Velocity": 1.2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "TV",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

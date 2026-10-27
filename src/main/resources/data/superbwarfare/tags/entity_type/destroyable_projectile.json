@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "sbw_loadout:9m336_radar"
+    "sbw_loadout:9m336_radar",
+    "sbw_loadout:cruise_missile"
   ]
 }

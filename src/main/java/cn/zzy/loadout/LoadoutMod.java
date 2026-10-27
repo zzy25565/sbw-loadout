@@ -29,6 +29,10 @@ public final class LoadoutMod {
           .<cn.zzy.loadout.guidance.RadarMissileEntity>of(cn.zzy.loadout.guidance.RadarMissileEntity::new,net.minecraft.world.entity.MobCategory.MISC)
           .sized(.5f,.5f).clientTrackingRange(256).updateInterval(1).build("sbw_loadout:9m336_radar"));
   public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ID);
+  public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>,net.minecraft.world.entity.EntityType<cn.zzy.loadout.guidance.CruiseMissileEntity>> CRUISE_MISSILE =
+      ENTITIES.register("cruise_missile",()->net.minecraft.world.entity.EntityType.Builder
+          .<cn.zzy.loadout.guidance.CruiseMissileEntity>of(cn.zzy.loadout.guidance.CruiseMissileEntity::new,net.minecraft.world.entity.MobCategory.MISC)
+          .sized(.35f,.35f).clientTrackingRange(256).updateInterval(1).build("sbw_loadout:cruise_missile"));
   public static final Map<String, DeferredItem<AmmoItem>> AMMO = new LinkedHashMap<>();
 
   static {
@@ -68,6 +72,7 @@ public final class LoadoutMod {
   public static final ModConfigSpec.IntValue AIRCRAFT_LASER_CODE;
   public static final ModConfigSpec.IntValue POD_RANGE;
   public static final ModConfigSpec.BooleanValue POD_ENABLED;
+  public static final ModConfigSpec.DoubleValue BOMB_RELEASE_SPREAD;
   public static final ModConfigSpec.ConfigValue<List<? extends String>> INFINITE;
 
   static {
@@ -84,6 +89,9 @@ public final class LoadoutMod {
     POD_ENABLED = b.comment("为已接入通用挂载的飞机/直升机启用独立光电吊舱视角。").define("podEnabled", true);
     POD_RANGE =
         b.comment("吊舱观测距离，单位格；不加载新区块，弹药仍受自身射程和射界限制。").defineInRange("podRange", 2048, 16, 4096);
+    BOMB_RELEASE_SPREAD =
+        b.comment("未锁定航弹投放时的最小随机散布，单位同弹药 Spread；有效制导锁定后为0。")
+            .defineInRange("bombReleaseSpread", 2.0, 0.0, 30.0);
     CONFIG = b.build();
   }
 

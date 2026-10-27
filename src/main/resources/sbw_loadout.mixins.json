@@ -12,7 +12,8 @@
   "client": [
     "VehicleInputMixin",
     "PodCameraMixin",
-    "ProjectileRenderMixin"
+    "ProjectileRenderMixin",
+    "PodThermalMixin"
   ],
   "injectors": {
     "defaultRequire": 1

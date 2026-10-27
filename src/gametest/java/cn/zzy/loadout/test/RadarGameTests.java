@@ -89,7 +89,7 @@ public final class RadarGameTests {
       var p=launched[0];var n=p.getPersistentData().getCompound(SeekerController.KEY);
       RadarGuidance.tick(p);check(h,n.getString("Phase").equals("BOOST"),"illumination-axis boost");
       n.putInt("Age",s.ammo.radar().climbTicks());RadarGuidance.tick(p);
-      check(h,n.getString("Phase").equals("MIDCOURSE"),"radar midcourse outside terminal range");
+      check(h,n.getString("Phase").equals("MIDCOURSE"),"radar midcourse outside terminal range: phase="+n.getString("Phase")+" target="+n.getUUID("Target")+" expected="+s.target.getUUID());
       p.setPos(s.target.position().add(0,0,-30));p.setDeltaMovement(0,0,2);RadarGuidance.tick(p);
       check(h,n.getBoolean("Terminal"),"terminal handoff within seeker range");
     });

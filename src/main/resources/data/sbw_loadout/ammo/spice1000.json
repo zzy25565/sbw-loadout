@@ -1,0 +1,22 @@
+{
+  "DisplayName": "SPICE 1000（游戏电视制导）",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/spice1000.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/spice1000.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:mk_82",
+  "Damage": 1505.61,
+  "ExplosionDamage": 1505.61,
+  "ExplosionRadius": 29.109,
+  "Velocity": 1.2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "TV",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

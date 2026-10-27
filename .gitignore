@@ -2,3 +2,12 @@
 build/
 run/
 *.blend1
+/libs/*.jar
+/source_models/
+/validation/
+/deliverables/
+/model_review/*.blend
+__pycache__/
+*.pyc
+.env
+.env.*

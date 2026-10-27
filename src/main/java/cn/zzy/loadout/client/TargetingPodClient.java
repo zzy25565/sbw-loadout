@@ -68,6 +68,12 @@ public final class TargetingPodClient {
   @SubscribeEvent
   public static void tick(ClientTickEvent.Post e) {
     while (VIEW.consumeClick()) toggle();
+    if (!active()) PodThermalVision.leave();
+  }
+
+  @SubscribeEvent
+  public static void logout(ClientPlayerNetworkEvent.LoggingOut e) {
+    PodThermalVision.disconnect();
   }
 
   @SubscribeEvent(priority = EventPriority.LOWEST)

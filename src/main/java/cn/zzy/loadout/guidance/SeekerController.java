@@ -74,6 +74,10 @@ public final class SeekerController {
         || !projectile.getPersistentData().contains(KEY)) return;
     CompoundTag n = projectile.getPersistentData().getCompound(KEY);
     ServerLevel level = (ServerLevel) projectile.level();
+    if (CruiseGuidance.active(projectile)) {
+      CruiseGuidance.tick(projectile);
+      return;
+    }
     if (!n.getString("Dimension").equals(level.dimension().location().toString())) {
       n.putString("Status", "WRONG_DIMENSION");
       neutralize(projectile);

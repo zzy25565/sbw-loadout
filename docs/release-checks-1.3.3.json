@@ -1,0 +1,51 @@
+{
+  "version": "1.3.3",
+  "jar": "sbw-loadout-1.3.3.jar",
+  "bytes": 91287919,
+  "sha256": "df88401b44006d2fb47e400ba3f15e54fa2fecf423b9bb25bb0281434a8ad857",
+  "bomb_count": 11,
+  "bombs": [
+    "fx1400",
+    "gbu31",
+    "gbu38",
+    "gbu53b",
+    "gbu58",
+    "kab1500kr",
+    "kab1500l",
+    "kab500kr",
+    "kab500l",
+    "ls500j",
+    "spice1000"
+  ],
+  "default_bomb_release_spread": 2.0,
+  "gametests_each_sbw_version": 60,
+  "client_checks": {
+    "0.8.9.1": 10,
+    "0.8.9.2": 10
+  },
+  "release_samples": {
+    "0.8.9.1": {
+      "samples": 32,
+      "initial_x_velocity_span": 0.05125826213464835,
+      "initial_y_velocity_span": 0.06024644205585497
+    },
+    "0.8.9.2": {
+      "samples": 32,
+      "initial_x_velocity_span": 0.05188993658993074,
+      "initial_y_velocity_span": 0.05223440829895312
+    }
+  },
+  "model_and_data_resources_unchanged": 140,
+  "ammo_definitions_unchanged": 29,
+  "preserved_controllers": [
+    "guidance/CruiseGuidance",
+    "guidance/CruiseMissileEntity",
+    "guidance/RadarGuidance",
+    "guidance/RadarMissileEntity",
+    "guidance/SeekerController",
+    "client/PodThermalVision",
+    "mixin/PodThermalMixin"
+  ],
+  "development_classes_excluded": true,
+  "network_protocol": 5
+}

@@ -222,6 +222,11 @@ public final class LoadoutService {
   }
 
   /** 复用 SBW 弹丸实体。Guidance 是弹药语义；实体/位置目标通过原生导引接口传递。 */
+  public static Vec3 launchOrigin(VehicleEntity v) {
+    return v.position().add(0, v.getBbHeight() * .45, 0)
+        .add(v.getViewVector(1).normalize().scale(v.getBbWidth() * .5 + 1));
+  }
+
   public static void fire(
       ServerPlayer p, VehicleEntity v, UUID requestedTarget, Vec3 requestedPos) {
     if (!pilot(p, v) || !supported(v)) return;
@@ -242,25 +247,25 @@ public final class LoadoutService {
       return;
     }
     Vec3 dir = v.getViewVector(1).normalize();
-    Vec3 pos =
-        v.position().add(0, v.getBbHeight() * .45, 0).add(dir.scale(v.getBbWidth() * .5 + 1));
+    Vec3 pos = launchOrigin(v);
+    boolean bomb = BombRelease.isBomb(a);
     SeekerMode seekerMode = SeekerMode.of(a.guidance());
     Vec3 targetPos = null;
     UUID target = null;
     ServerLevel level = (ServerLevel) v.level();
     Entity candidate = requestedTarget == null ? null : level.getEntity(requestedTarget);
-    if (seekerMode == SeekerMode.OTHER
+    if (!bomb && seekerMode == SeekerMode.OTHER
         && candidate != null
         && candidate != v
         && candidate.isAlive()
         && validTarget(p, pos, dir, candidate.getBoundingBox().getCenter(), a)) {
       target = candidate.getUUID();
       targetPos = candidate.getBoundingBox().getCenter();
-    } else if (seekerMode == SeekerMode.OTHER
+    } else if (!bomb && seekerMode == SeekerMode.OTHER
         && requestedPos != null
         && validTarget(p, pos, dir, requestedPos, a)) targetPos = requestedPos;
     // 红外弹种没有原生武器槽也能按 JSON 的距离/角度搜索可见实体。
-    if (a.guidance().equalsIgnoreCase("IR") && target == null) {
+    if (!bomb && a.guidance().equalsIgnoreCase("IR") && target == null) {
       List<Entity> candidates =
           new ArrayList<>(
               level.getEntities(
@@ -282,7 +287,7 @@ public final class LoadoutService {
         }
     }
 
-    if (targetPos == null
+    if (!bomb && targetPos == null
         && seekerMode == SeekerMode.OTHER
         && !a.guidance().equalsIgnoreCase("IR")) {
       HitResult ray =
@@ -304,51 +309,63 @@ public final class LoadoutService {
     Entity radarTarget = null;
     if (seekerMode == SeekerMode.RADAR) {
       radarTarget = RadarLocks.current(p, v, a);
-      if (radarTarget == null) {
+      if (radarTarget == null && !bomb) {
         message(p, "雷达未锁定：使用 TRK，或独立安装时按 K 锁定，未消耗弹药");
         return;
       }
-      if (!RadarGuidance.canLaunch(v, a)) {
+      if (radarTarget != null && !RadarGuidance.canLaunch(v, a)) {
         message(p, "雷达照射通道已满，未消耗弹药");
         return;
       }
-      target = radarTarget.getUUID();
-      targetPos = radarTarget.getBoundingBox().getCenter();
+      if (radarTarget != null) {
+        target = radarTarget.getUUID();
+        targetPos = radarTarget.getBoundingBox().getCenter();
+      }
     }
     LaserDesignations.Spot laser = null;
     TelevisionLocks.Lock television = null;
     if (seekerMode == SeekerMode.LASER) {
       laser = LaserDesignations.select(p, a.laserCode(), pos, dir, a.seekRange(), a.seekAngle());
-      if (laser == null) {
+      if (laser == null && !bomb) {
         message(p, "没有匹配编码的可见激光照射点，未消耗弹药");
         return;
       }
     }
-    if (seekerMode == SeekerMode.TV) {
+    if (BombRelease.acceptsPointLock(a)) {
       if ((requestedTarget != null || requestedPos != null)
           && !TelevisionLocks.acquire(p, v, a, requestedTarget, requestedPos)) {
         message(p, "电视目标未通过锁定校验，未消耗弹药");
         return;
       }
       television = TelevisionLocks.current(p, v, a);
-      if (television == null) {
+      if (television == null && !bomb) {
         message(p, "电视导引头未锁定：按 K 锁定，未消耗弹药");
         return;
       }
     }
+    Vec3 cruisePoint = television == null ? targetPos : television.point();
+    if (a.cruise().enabled() && !AimSupport.finite(cruisePoint)) {
+      message(p, "低空巡航弹需要有效目标，未消耗弹药");
+      return;
+    }
+    boolean guidedBomb = bomb && (laser != null || television != null || radarTarget != null);
+    double releaseSpread = BombRelease.spread(a, guidedBomb);
+    // 没有锁定时必须使用真正的炸弹物理，不能让复用 AGM65 的航弹继续推进或自动指向射线落点。
     int shots = 0;
     for (int burst = 0; burst < a.burst(); burst++) {
       Entry entry = s.entries.isEmpty() ? null : s.entries.getFirst();
       if (entry == null || !entry.ammo().equals(a.id())) break;
-      if (seekerMode == SeekerMode.RADAR && !RadarGuidance.canLaunch(v,a)) break;
+      if (radarTarget != null && !RadarGuidance.canLaunch(v,a)) break;
       Entity entity =
           BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(a.projectile())).create(level);
+      if (bomb && !guidedBomb && entity instanceof MissileProjectile)
+        entity = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse("superbwarfare:mk_82")).create(level);
       if (!(entity instanceof Projectile projectile)
           || !(entity instanceof IBulletProperties properties)) {
         message(p, "弹丸未实现 SBW 弹道属性，未消耗弹药");
         break;
       }
-      if (seekerMode != SeekerMode.OTHER
+      if (((!bomb && seekerMode != SeekerMode.OTHER) || guidedBomb)
           && (!(projectile instanceof DestroyableProjectile)
               || !projectile
                   .getType()
@@ -372,9 +389,12 @@ public final class LoadoutService {
         guided.setTargetUUID(target == null ? "none" : target.toString());
         guided.setTargetPos(targetPos);
       }
-      projectile.shoot(dir.x, dir.y, dir.z, (float) a.velocity(), (float) a.spread());
+      projectile.shoot(dir.x, dir.y, dir.z, (float) a.velocity(), (float) releaseSpread);
       projectile.setDeltaMovement(projectile.getDeltaMovement().add(v.getDeltaMovement()));
-      if (seekerMode == SeekerMode.LASER)
+      if (a.cruise().enabled())
+        GuidanceApi.cruise(projectile,a,v.getUUID(),
+            television == null ? target : television.target(),cruisePoint);
+      else if (laser != null)
         GuidanceApi.laser(
             projectile,
             laser.source(),
@@ -383,7 +403,7 @@ public final class LoadoutService {
             a.seekRange(),
             a.seekAngle(),
             a.turnRate());
-      else if (seekerMode == SeekerMode.TV)
+      else if (television != null)
         GuidanceApi.television(
             projectile,
             television.target(),
@@ -391,7 +411,7 @@ public final class LoadoutService {
             a.seekRange(),
             a.seekAngle(),
             a.turnRate());
-      if (seekerMode == SeekerMode.RADAR)
+      if (radarTarget != null)
         RadarGuidance.arm(projectile,p,v,radarTarget,a);
       if (level.addFreshEntity(projectile)) {
         if (!infinite(p)) s.entries.removeFirst();

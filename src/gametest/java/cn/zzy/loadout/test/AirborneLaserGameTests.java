@@ -153,7 +153,7 @@ public final class AirborneLaserGameTests {
       ok(h, a != null && a.renderProjectileModel(), "active full-detail definition loaded: " + id);
       ok(
           h,
-          a.turnRate() == (id.equals("kab1500kr") ? 4 : 5),
+          a.turnRate() == (id.equals("kab1500kr") ? 4 : id.equals("kh59mk") ? 3 : 5),
           "missiles gain moderate turn rate while bomb remains gentler: " + id);
       var p = player(h);
       var v = plane(h, p, a.id());

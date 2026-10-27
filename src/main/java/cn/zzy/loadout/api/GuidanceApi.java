@@ -7,6 +7,11 @@ import net.minecraft.world.phys.Vec3;
 
 /** 给第三方发射代码接入导引头；在服务端弹丸加入世界前调用，模型与弹丸注册无需改变。 */
 public final class GuidanceApi {
+  /** 第三方发射器必须先在服务端验证目标；参数快照随弹体存档。 */
+  public static void cruise(Projectile p, AmmoType ammo, UUID launcher, UUID target, Vec3 point) {
+    CruiseGuidance.arm(p,ammo,launcher,target,point);
+  }
+
   public static void laser(
       Projectile p,
       UUID designator,

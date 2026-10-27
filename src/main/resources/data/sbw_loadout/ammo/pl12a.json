@@ -1,0 +1,22 @@
+{
+  "DisplayName": "PL-12A（游戏雷达制导）",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/pl12a.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/pl12a.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "sbw_loadout:9m336_radar",
+  "Damage": 65.11,
+  "ExplosionDamage": 65.11,
+  "ExplosionRadius": 10.217,
+  "Velocity": 2.6,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "RADAR",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 5,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

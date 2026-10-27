@@ -17,6 +17,7 @@ public final class ClientSetup {
   @SubscribeEvent
   public static void renderers(EntityRenderersEvent.RegisterRenderers e) {
     e.registerEntityRenderer(LoadoutMod.RADAR_MISSILE.get(),com.atsuishio.superbwarfare.client.renderer.projectile.BasicProjectileRenderer::new);
+    e.registerEntityRenderer(LoadoutMod.CRUISE_MISSILE.get(),com.atsuishio.superbwarfare.client.renderer.projectile.BasicProjectileRenderer::new);
   }
 
   @SubscribeEvent

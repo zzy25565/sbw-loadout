@@ -1,0 +1,22 @@
+{
+  "DisplayName": "GBU-38（游戏点制导）",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/gbu38.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/gbu38.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 650.0,
+  "ExplosionDamage": 650.0,
+  "ExplosionRadius": 22.0,
+  "Velocity": 1.2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "INS",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

@@ -22,7 +22,7 @@ public final class TelevisionLocks {
   /** 客户端只提交锁定意图；实体身份、射界、遮挡与固定点的真实表面都由服务端验证。 */
   public static boolean acquire(
       ServerPlayer p, VehicleEntity v, AmmoType a, UUID requested, Vec3 point) {
-    if (!LoadoutService.pilot(p, v) || SeekerMode.of(a.guidance()) != SeekerMode.TV) return false;
+    if (!LoadoutService.pilot(p, v) || !BombRelease.acceptsPointLock(a)) return false;
     Vec3 from = p.getEyePosition(), dir = v.getViewVector(1);
     Entity e = requested == null ? null : p.serverLevel().getEntity(requested);
     Vec3 target;
@@ -53,7 +53,8 @@ public final class TelevisionLocks {
     LOCKS.put(
         p.getUUID(),
         new Lock(
-            v.getUUID(), a.id(), p.level().dimension().location().toString(), requested, target));
+            v.getUUID(), a.id(), p.level().dimension().location().toString(),
+            BombRelease.pointGuided(a) ? null : requested, target));
     return true;
   }
 
@@ -75,11 +76,12 @@ public final class TelevisionLocks {
         || session.point == null
         || !session.point.equals(point)
         || !Objects.equals(session.target, target)
-        || SeekerMode.of(a.guidance()) != SeekerMode.TV) return false;
+        || !BombRelease.acceptsPointLock(a)) return false;
     LOCKS.put(
         p.getUUID(),
         new Lock(
-            v.getUUID(), a.id(), p.level().dimension().location().toString(), target, point, true));
+            v.getUUID(), a.id(), p.level().dimension().location().toString(),
+            BombRelease.pointGuided(a) ? null : target, point, true));
     return true;
   }
 

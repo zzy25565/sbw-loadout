@@ -242,6 +242,8 @@ final class AirModelsSmoke {
               entity.setYRot(0);
               ((IBulletProperties) entity).setCustomGravity(0);
               ((AmmoModelEntity) entity).loadoutAmmoModel(a.id());
+              if(a.cruise().enabled())
+                CruiseGuidance.arm(entity,a,v.getUUID(),null,entity.position().add(0,0,500));
               level.addFreshEntity(entity);
               previews.add(entity.getUUID());
             }

@@ -1,0 +1,22 @@
+{
+  "DisplayName": "R-40TD 红外导弹",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/r40td.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/r40td.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:ru_9m336_missile",
+  "Damage": 304.0,
+  "ExplosionDamage": 304.0,
+  "ExplosionRadius": 17.077,
+  "Velocity": 2.6,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "IR",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 5,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

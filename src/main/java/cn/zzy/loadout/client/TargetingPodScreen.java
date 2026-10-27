@@ -2,6 +2,7 @@ package cn.zzy.loadout.client;
 
 import cn.zzy.loadout.guidance.TargetingPod;
 import com.atsuishio.superbwarfare.entity.vehicle.base.VehicleEntity;
+import com.atsuishio.superbwarfare.init.ModKeyMappings;
 import com.google.gson.JsonObject;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.GuiGraphics;
@@ -16,6 +17,7 @@ public final class TargetingPodScreen extends Screen {
   private final java.util.UUID vehicle;
   private CameraType previous;
   private int ticks, zoom;
+  private boolean thermal;
   private double mx = Double.NaN, my;
   private float yaw, pitch = 25;
   private static final float[] FOV = {50, 25, 12, 6};
@@ -28,6 +30,8 @@ public final class TargetingPodScreen extends Screen {
 
   @Override
   protected void init() {
+    PodThermalVision.enter();
+    PodThermalVision.apply(thermal);
     if (previous == null) {
       previous = minecraft.options.getCameraType();
       minecraft.options.setCameraType(CameraType.FIRST_PERSON);
@@ -50,6 +54,32 @@ public final class TargetingPodScreen extends Screen {
 
   public int zoomIndex() {
     return zoom;
+  }
+
+  public boolean thermalEnabled() {
+    return thermal;
+  }
+
+  public void toggleThermal() {
+    thermal = !thermal;
+    PodThermalVision.apply(thermal);
+  }
+
+  private boolean thermalKeyConflicts() {
+    var key = ModKeyMappings.ACTIVE_THERMAL_IMAGING;
+    if (key.getKey().equals(GuidanceClient.LOCK.getKey())
+        || key.getKey().equals(TargetingPodClient.VIEW.getKey())) return true;
+    for (int reserved : new int[] {GLFW.GLFW_KEY_ESCAPE, GLFW.GLFW_KEY_L, GLFW.GLFW_KEY_G,
+        GLFW.GLFW_KEY_ENTER, GLFW.GLFW_KEY_KP_ENTER, GLFW.GLFW_KEY_R, GLFW.GLFW_KEY_EQUAL,
+        GLFW.GLFW_KEY_KP_ADD, GLFW.GLFW_KEY_MINUS, GLFW.GLFW_KEY_KP_SUBTRACT,
+        GLFW.GLFW_KEY_LEFT, GLFW.GLFW_KEY_RIGHT, GLFW.GLFW_KEY_UP, GLFW.GLFW_KEY_DOWN})
+      if (key.matches(reserved, 0)) return true;
+    return false;
+  }
+
+  private String thermalKeyHint() {
+    return (thermalKeyConflicts() ? "Shift+" : "")
+        + ModKeyMappings.ACTIVE_THERMAL_IMAGING.getTranslatedKeyMessage().getString();
   }
 
   public void zoom(int delta) {
@@ -137,6 +167,7 @@ public final class TargetingPodScreen extends Screen {
 
   @Override
   public void removed() {
+    PodThermalVision.leave();
     if (previous != null) minecraft.options.setCameraType(previous);
     if (minecraft.getConnection() != null) TargetingPodClient.send("pod_close");
     // 不保留飞行按键的按下状态；退出后由真实输入重新接管。
@@ -163,13 +194,20 @@ public final class TargetingPodScreen extends Screen {
 
   @Override
   public boolean mouseClicked(double x, double y, int button) {
-    if (button == 0) lockTarget();
+    if (button == 0 && x >= 18 && x < 91 && y >= 20 && y < 36) toggleThermal();
+    else if (button == 0) lockTarget();
     else if (button == 1) stabilize();
     return true;
   }
 
   @Override
   public boolean keyPressed(int key, int scan, int modifiers) {
+    // SBW 原生热成像与本附属锁定都默认为 K；冲突时用 Shift+原生键。
+    if (ModKeyMappings.ACTIVE_THERMAL_IMAGING.matches(key, scan)
+        && (!thermalKeyConflicts() || (modifiers & GLFW.GLFW_MOD_SHIFT) != 0)) {
+      toggleThermal();
+      return true;
+    }
     if (key == GLFW.GLFW_KEY_ESCAPE || TargetingPodClient.VIEW.matches(key, scan)) {
       onClose();
       return true;
@@ -234,13 +272,16 @@ public final class TargetingPodScreen extends Screen {
   @Override
   public void render(GuiGraphics g, int mouseX, int mouseY, float partial) {
     int w = width, h = height, c = 0xffdcffe6, muted = 0xff7fbb9a, cx = w / 2, cy = h / 2;
-    int top = 38, bottom = h - 44;
+    int top = 38, bottom = h - 59;
     g.fill(0, 0, w, top, 0xe4101c1b);
     g.fill(0, bottom, w, h, 0xe4101c1b);
     g.fill(0, top, 12, bottom, 0x99101c1b);
     g.fill(w - 12, top, w, bottom, 0x99101c1b);
     g.drawString(font, "TGP / 光电吊舱", 20, 10, c);
-    g.drawString(font, "EO  ·  FOV " + (int) fov() + "°", 20, 23, muted);
+    boolean modeHover = mouseX >= 18 && mouseX < 91 && mouseY >= 20 && mouseY < 36;
+    g.fill(18, 20, 91, 36, modeHover ? 0xff35574a : 0xff223c32);
+    g.drawString(font, thermal ? "IR 热成像 ▾" : "EO 可见光 ▾", 22, 24, thermal ? c : muted);
+    g.drawString(font, "FOV " + (int) fov() + "°", 99, 24, muted);
     var state = GuidanceClient.current();
     var pod = TargetingPodClient.snapshot();
     String mode =
@@ -273,6 +314,11 @@ public final class TargetingPodScreen extends Screen {
     g.drawCenteredString(font, label, cx, 11, statusColor);
     String seeker = laserAmmo ? "LASER" : "TV";
     String readyText = seeker + (ready ? " READY / 检查发射射界" : " HOLD / 检查照射或锁定");
+    if (state != null && state.has("is_bomb") && state.get("is_bomb").getAsBoolean()) {
+      ready = state.get("bomb_guided").getAsBoolean();
+      readyText = ready ? "GUIDED / 无投放散布"
+          : "BOMB / 普通投放" + (state.get("bomb_spread").getAsDouble() > 0 ? " · 有散布" : "");
+    }
     g.drawString(font, readyText, w - font.width(readyText) - 20, 11, ready ? c : 0xffffba79);
     line(g, cx - 28, cy, cx - 8, cy + 1, c);
     line(g, cx + 8, cy, cx + 28, cy + 1, c);
@@ -311,6 +357,12 @@ public final class TargetingPodScreen extends Screen {
               point.z);
       g.drawString(font, text, w - font.width(text) - 22, bottom - 17, c);
     } else g.drawString(font, "RNG ---", w - 85, bottom - 17, muted);
+    g.drawCenteredString(
+        font,
+        thermalKeyHint() + " 切换热成像 · 点击左上角 EO / IR 切换",
+        cx,
+        h - 47,
+        muted);
     g.drawCenteredString(
         font,
         "中键拖动/方向键转镜头 · 滚轮变倍 · "

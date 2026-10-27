@@ -1,0 +1,22 @@
+{
+  "DisplayName": "Brimstone Dual（游戏激光制导）",
+  "Category": "Missile",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/brimstone_dual.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/brimstone_dual.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:agm_65",
+  "Damage": 38.68,
+  "ExplosionDamage": 6.33,
+  "ExplosionRadius": 3.931,
+  "Velocity": 2.6,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "LASER",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 5,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

@@ -238,11 +238,12 @@ public final class LoadoutGameTests {
             .toList();
     check(h, spawned.size() == 1, "exactly one native projectile created");
     var props = (IBulletProperties) spawned.getFirst();
+    var configured = LoadoutData.ammo().get("sbw_loadout:kh38mt");
     check(
         h,
-        props.getDamage() == 620
-            && props.getExplosionDamage() == 320
-            && props.getExplosionRadius() == 8,
+        props.getDamage() == (float) configured.damage()
+            && props.getExplosionDamage() == (float) configured.explosionDamage()
+            && props.getExplosionRadius() == (float) configured.explosionRadius(),
         "JSON damage parameters applied");
     LoadoutService.fire(p, v, null, null);
     check(h, LoadoutService.state(v).entries.size() == 1, "spam cannot bypass cooldown");

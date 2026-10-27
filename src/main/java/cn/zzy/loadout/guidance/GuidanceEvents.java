@@ -60,6 +60,12 @@ public final class GuidanceEvents {
         var a = LoadoutData.ammo().get(state.entries.getFirst().ammo());
         if (a != null) {
           j.addProperty("seeker", a.guidance());
+          if (BombRelease.isBomb(a)) {
+            boolean guided = BombRelease.ready(p, v, a);
+            j.addProperty("is_bomb", true);
+            j.addProperty("bomb_guided", guided);
+            j.addProperty("bomb_spread", BombRelease.spread(a, guided));
+          }
           if (SeekerMode.of(a.guidance())==SeekerMode.RADAR) {
             EntityRadarSnapshot.fill(j,p,v,a);
           }

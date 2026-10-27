@@ -1,0 +1,22 @@
+{
+  "DisplayName": "GBU-58 激光制导航弹",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/gbu58.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/gbu58.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 1,
+  "Projectile": "superbwarfare:mk_82",
+  "Damage": 331.63,
+  "ExplosionDamage": 331.63,
+  "ExplosionRadius": 17.579,
+  "Velocity": 1.2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "LASER",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}

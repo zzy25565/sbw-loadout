@@ -118,6 +118,15 @@ public final class GuidanceClient {
       text+=" · 通道 "+j.get("radar_channels").getAsInt()+"/"+j.get("radar_limit").getAsInt();
       color=locked ? 0x77ff99 : 0xffcc77;
     }
+    if (j.has("is_bomb") && j.get("is_bomb").getAsBoolean()) {
+      boolean guided = j.get("bomb_guided").getAsBoolean();
+      boolean scattered = j.get("bomb_spread").getAsDouble() > 0;
+      boolean laser = SeekerMode.of(j.get("seeker").getAsString()) == SeekerMode.LASER;
+      text = guided ? "制导投放 · 无随机投放散布"
+          : "普通投放 · " + (scattered ? "有随机散布" : "无额外散布") + " · "
+              + (laser ? "F6 后 L 激光照射" : "K / F6 锁定");
+      color = guided ? 0x77ff99 : 0xffcc77;
+    }
     if (text != null)
       e.getGuiGraphics()
           .drawCenteredString(

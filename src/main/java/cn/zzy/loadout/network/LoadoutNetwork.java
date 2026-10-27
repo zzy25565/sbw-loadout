@@ -39,7 +39,7 @@ public final class LoadoutNetwork {
   }
 
   public static void register(RegisterPayloadHandlersEvent event) {
-    var r = event.registrar("4");
+    var r = event.registrar("5");
     r.playToServer(
         Request.TYPE,
         Request.CODEC,
@@ -63,7 +63,7 @@ public final class LoadoutNetwork {
                           boolean ok =
                               cn.zzy.loadout.guidance.TargetingPod.lock(
                                   p, op.equals("pod_stabilize"));
-                          LoadoutService.message(p, ok ? "吊舱已稳定目标；TV 弹仍需满足发射射界" : "吊舱未发现可见目标");
+                          LoadoutService.message(p, ok ? "吊舱已稳定目标；制导投放仍需有效锁定或激光照射" : "吊舱未发现可见目标");
                         }
                         case "pod_unlock" -> cn.zzy.loadout.guidance.TargetingPod.unlock(p);
                         case "pod_laser" -> {
@@ -102,7 +102,7 @@ public final class LoadoutNetwork {
                                       j.get("z").getAsDouble())
                                   : null);
                       LoadoutService.message(
-                          p, ok ? "电视导引头已锁定，发射后自主追踪" : "电视锁定失败：请对准可见目标并选择 TV 弹药");
+                          p, ok ? "目标已锁定，可进行制导发射/投放" : "锁定失败：请对准可见目标并选择 TV 或坐标制导弹药");
                       cn.zzy.loadout.guidance.GuidanceEvents.sync(p);
                       return;
                     }

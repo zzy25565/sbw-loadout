@@ -3,13 +3,13 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.80'
 }
 group = 'cn.zzy'
-version = '1.2.0'
+version = '1.3.3'
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 repositories { mavenCentral(); maven { url = 'https://thedarkcolour.github.io/KotlinForForge/' } }
 neoForge {
     version = providers.gradleProperty('neoVersion').getOrElse('21.1.248')
     runs {
-        client { client(); if(project.hasProperty("guidancesmoke")) jvmArgument "-Dsbw.guidanceSmoke=true"; if ((project.hasProperty("smoke") || project.hasProperty("guidancesmoke"))) { programArgument "--width"; programArgument "1280"; programArgument "--height"; programArgument "800" } }
+        client { client(); if(project.hasProperty("guidancesmoke")) jvmArgument "-Dsbw.guidanceSmoke=true"; if(project.hasProperty("modelsmoke")) jvmArgument "-Dsbw.modelSmoke=true"; if(project.hasProperty("cruisesmoke")) jvmArgument "-Dsbw.cruiseSmoke=true"; if(project.hasProperty("thermalsmoke")) jvmArgument "-Dsbw.thermalSmoke=true"; if(project.hasProperty("bombsmoke")) jvmArgument "-Dsbw.bombSmoke=true"; if ((project.hasProperty("smoke") || project.hasProperty("guidancesmoke") || project.hasProperty("modelsmoke") || project.hasProperty("cruisesmoke") || project.hasProperty("thermalsmoke") || project.hasProperty("bombsmoke"))) { programArgument "--width"; programArgument "1280"; programArgument "--height"; programArgument "800" } }
         server { server(); programArgument '--nogui' }
         gameTestServer { type = 'gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', 'sbw_loadout' }
     }
@@ -21,6 +21,10 @@ if (project.hasProperty('gametest')) {
 }
 if (project.hasProperty('guidancesmoke')) sourceSets.main.java.srcDir('src/guidancesmoke/java')
 if (project.hasProperty('smoke')) sourceSets.main.java.srcDir('src/smoke/java')
+if (project.hasProperty('modelsmoke')) sourceSets.main.java.srcDir('src/modelsmoke/java')
+if (project.hasProperty('cruisesmoke')) sourceSets.main.java.srcDir('src/cruisesmoke/java')
+if (project.hasProperty('thermalsmoke')) sourceSets.main.java.srcDir('src/thermalsmoke/java')
+if (project.hasProperty('bombsmoke')) sourceSets.main.java.srcDir('src/bombsmoke/java')
 dependencies {
     implementation 'thedarkcolour:kotlinforforge-neoforge:5.10.0'
     compileOnly fileTree(dir: 'libs', include: ['*.jar'], exclude: ['superbwarfare-*.jar'])

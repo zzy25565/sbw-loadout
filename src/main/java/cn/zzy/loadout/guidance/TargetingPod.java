@@ -145,7 +145,8 @@ public final class TargetingPod {
     if (s == null || v == null) return false;
     var hit = hit(p);
     if (hit == null) return false;
-    s.target = stabilize ? null : hit.entity();
+    AmmoType a = firstAmmo(v);
+    s.target = stabilize || (a != null && BombRelease.pointGuided(a)) ? null : hit.entity();
     s.point = hit.point();
     if (s.target != null) {
       Entity e = p.serverLevel().getEntity(s.target);
@@ -155,8 +156,7 @@ public final class TargetingPod {
     s.mode = s.target != null ? "TRACK" : "AREA";
     update(p);
     // 传感器可以观察侧后方；弹药仍必须通过自己的发射射界与距离校验。
-    AmmoType a = firstAmmo(v);
-    if (a != null && SeekerMode.of(a.guidance()) == SeekerMode.TV)
+    if (a != null && BombRelease.acceptsPointLock(a))
       TelevisionLocks.acquireFromPod(p, v, a, s.target, s.point);
     return true;
   }

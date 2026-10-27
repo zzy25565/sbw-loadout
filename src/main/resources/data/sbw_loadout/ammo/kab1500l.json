@@ -1,0 +1,22 @@
+{
+  "DisplayName": "KAB-1500L 激光制导航弹",
+  "Category": "GuidedBomb",
+  "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/kab1500l.png",
+  "Model": "sbw_loadout:models/bedrock/ammo/wt_review/kab1500l.geo.json",
+  "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
+  "RenderProjectileModel": true,
+  "Slots": 2,
+  "Projectile": "superbwarfare:mk_82",
+  "Damage": 3869.05,
+  "ExplosionDamage": 3869.05,
+  "ExplosionRadius": 39.871,
+  "Velocity": 1.2,
+  "Burst": 1,
+  "Spread": 0,
+  "Guidance": "LASER",
+  "SeekRange": 768,
+  "SeekAngle": 35,
+  "TurnRate": 4,
+  "LaserCode": 1688,
+  "Cooldown": 40
+}
