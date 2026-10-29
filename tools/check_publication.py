@@ -27,8 +27,8 @@ for name in names:
         raw=path.read_bytes()
         if any(re.search(pattern,raw) for pattern in patterns):suspects.append(name)
 assert not suspects,suspects
-checks=json.loads((P/'docs/release-checks-1.3.3.json').read_text(encoding='utf-8'))
-assert checks['gametests_each_sbw_version']==60 and checks['ammo_definitions_unchanged']==29
-assert "version = '1.3.3'" in (P/'build.gradle').read_text()
+checks=json.loads((P/'docs/release-checks-1.3.4.json').read_text(encoding='utf-8'))
+assert checks['gametests_each_sbw_version']==74 and checks['air_to_air_count']==10
+assert "version = '1.3.4'" in (P/'build.gradle').read_text()
 print(json.dumps({'readme_links_valid':True,'staged_files':len(names),'unwanted_staged_files':blocked,
-    'secret_pattern_matches':suspects,'version':'1.3.3'},ensure_ascii=False))
+    'secret_pattern_matches':suspects,'version':'1.3.4'},ensure_ascii=False))

@@ -1,10 +1,12 @@
-# SBW 自定义挂载 1.3.3
+# SBW 自定义挂载 1.3.4
 
-适用 MC 1.21.1、NeoForge 21.1.240+、SBW 0.8.9.1 / 0.8.9.2。客户端与服务端都安装相同 JAR，沿用 SBW 所需的 Kotlin For Forge 等依赖。更新日期：2026-10-27。
+适用 MC 1.21.1、NeoForge 21.1.240+、SBW 0.8.9.1 / 0.8.9.2。客户端与服务端都安装相同 JAR，沿用 SBW 所需的 Kotlin For Forge 等依赖。更新日期：2026-10-29。
 
-**下载：[1.3.3 正式版](https://github.com/zzy25565/sbw-loadout/releases/tag/v1.3.3)** · [最新发布](https://github.com/zzy25565/sbw-loadout/releases/latest) · [验收记录](docs/验收_1.3.3.md)
+**下载：[1.3.4 正式版](https://github.com/zzy25565/sbw-loadout/releases/tag/v1.3.4)** · [最新发布](https://github.com/zzy25565/sbw-loadout/releases/latest) · [空空适配与验收](docs/空空导弹适配_1.3.4.md)
 
 本版包含 29 种弹药、11 种航弹，支持机腹光电吊舱、原生热成像、TV/激光/坐标制导、雷达弹，以及 Kh-59MK / X-555 独立低空巡航。航弹可未锁定投放并带随机散布；有效锁定后取消本次投放散布。
+
+1.3.4 新增：AIM-54A/C、PL-12/12A、R-40RD/TD、R-73/73L、R-77/77-1 共 10 种空空导弹接入 **sbw-radar 1.11.1**。雷达型号共享服务端 TRK / TWS 航迹、照射通道和箔条；红外型号共享热目标锁定、锁定提示与热诱弹。每次仅生成挂载已扣费的一枚原弹体。10 种空空弹的爆炸伤害降至 1.3.3 的 **50%**，直击和半径保留。Kh-38MT 空地红外弹、航弹、低空巡航及既有 9M336 威力保留。两模组联装须同时升级；详细操作、伤害表与测试见 [空空导弹适配](docs/空空导弹适配_1.3.4.md)。协议仍为 5。
 
 1.3.3 新增：全部 11 种航弹在未锁定投放时加入随机散布，TV、激光、坐标制导航弹取得服务端有效目标后取消本次投放散布。未锁定的制导航弹可按普通炸弹投放；坐标航弹新增 K / 吊舱固定点锁定。HUD 区分普通投放与制导投放。散布参数及规则见 [航弹投放散布](docs/航弹投放散布.md)。导弹发射规则、1.3.2 伤害、模型和热成像保留，协议仍为 5。
 
@@ -18,7 +20,7 @@
 
 1.2.0 新增：9M336 雷达导弹、独立弹体和雷达附属 1.3.0 联动。操作、参数及接入示例见 [雷达弹与雷达联动](docs/雷达弹与雷达联动.md)。雷达默认模式键改为 O、扫描宽度键为 P，保留本附属的 K / L 导引操作。
 
-v1.1beta 新增：机载激光（吊舱内 L 开关）、Kh-29L 激光制导、KAB-1500Kr / Kh-59MK 电视制导及完整物品/飞行模型；Kh-58UShK 只打包隐藏资源。原始 Blender 模型无图片贴图，保留灰色材质与全部网格；见 [机载激光与新增弹药](docs/机载激光与新增弹药.md)。该段介绍旧版功能；当前版本为 `1.3.3`，通信协议为 5。
+v1.1beta 新增：机载激光（吊舱内 L 开关）、Kh-29L 激光制导、KAB-1500Kr / Kh-59MK 电视制导及完整物品/飞行模型；Kh-58UShK 只打包隐藏资源。原始 Blender 模型无图片贴图，保留灰色材质与全部网格；见 [机载激光与新增弹药](docs/机载激光与新增弹药.md)。该段介绍旧版功能；当前版本为 `1.3.4`，通信协议为 5。
 
 此前 1.1alepha 已实现：火炮指示器持续激光照射；激光断照后惯性导引及重获；TV 锁定后自主追踪；平滑限角转向；沿用 SBW 原生近防炮可拦截弹体。2026-10-22 补充独立吊舱视角（F6 进入、K 锁定、Enter 投放）、地面稳定、变倍，以及可调激光柔光；见 [吊舱视角与激光外观](docs/吊舱视角与激光外观.md)。最低 NeoForge 仍为 21.1.240。新增导引功能的操作和接入见 [激光与电视导引说明](docs/激光与电视导引.md)。
 
@@ -43,7 +45,7 @@ v1.1beta 新增：机载激光（吊舱内 L 开关）、Kh-29L 激光制导、K
 
 ## 使用
 
-1. 把 `sbw-loadout-1.3.3.jar` 放入客户端及服务器 `mods/`，移出旧版挂载 JAR。
+1. 把 `sbw-loadout-1.3.4.jar` 放入客户端及服务器 `mods/`，移出旧版挂载 JAR。需要空空联动时同时安装 `sbw_radar-1.11.1.jar`；两边都更新，勿混装旧版。
 2. 在载具数据中声明 `Loadout`，并确保原有 `Type` 为 `Airplane` 或 `Helicopter`。
 3. 在“SBW 自定义挂载”创造栏取弹，或用 `/give` 获取内置弹药（原八件固定物品及新增通用弹种）。
 4. 主手持弹药右键装一枚；潜行右键批量配置。近距离、载具未损毁且没有其他乘员占用时可编辑。
@@ -64,6 +66,8 @@ v1.1beta 新增：机载激光（吊舱内 L 开关）、Kh-29L 激光制导、K
 | 热成像切换 | Shift+K，或点击左上角 EO / IR |
 
 热成像使用 SBW 原生按键映射。其默认 K 与本模组锁定键冲突，因此在吊舱内加 Shift；改到不冲突的按键后可直接使用新键，界面显示实际组合键。
+
+空空联动：O 切换雷达 SRC / TWS / TRK，J 切换 TRK 目标，P 调整宽度；雷达空空弹取得有效 TRK 或 TWS 敌方航迹后使用原有开火键发射。红外空空弹对准可见热目标，显示 IR 锁定后开火，不占用雷达照射通道。G 投放热诱弹、H 投放箔条，消耗载具储物空间中的原生热诱弹 superbwarfare:flying_flare_ammo 或箔条 sbw_radar:chaff；载具须支持原生诱饵。**SBW 将无队伍驾驶员的载具视为中立目标；中立雷达点不提供空空雷达发射许可。** 旧 options.txt 可能保留雷达 K / L 键，需在控制设置中手动调整为 O / P。
 
 服务器世界的 `serverconfig/sbw_loadout-server.toml` 新增 `bombReleaseSpread = 2.0`：未锁定航弹取该值与弹种 `Spread` 的较大值，有效锁定时为 0。单位沿用原生 Spread，不是角度或固定米数。具体规则见 [航弹投放散布](docs/航弹投放散布.md)。
 
@@ -149,9 +153,10 @@ LoadoutApi.register(AmmoType.builder("mymod:my_missile")
 | 已锁定航弹 | 无额外投放散布；TV 跟踪目标，坐标制导保持固定点，激光制导沿用持续照射与断照惯性。 |
 | 普通导弹 | 仍使用原生弹体与对应导引逻辑；TV / 激光 / 雷达弹必须满足原有有效目标条件。 |
 | Kh-59MK / X-555 | 使用独立 `sbw_loadout:cruise_missile`，执行低空巡航与末段拦截，保留原弹药 ID。 |
-| 9M336 雷达弹 | 使用独立雷达弹体；独立安装可 K 锁定，安装雷达附属后接受其服务端 TRK。 |
+| 雷达空空弹 / 既有 9M336 | 使用独立雷达弹体；独立安装可 K 锁定，安装雷达附属后接受其服务端 TRK / TWS 航迹。 |
+| 红外空空弹 | 单独安装保留原生流程；联装雷达 1.11.1 时共享红外热目标锁定和热诱弹，不接管 Kh-38MT 空地红外弹。 |
 
-`Damage`、`ExplosionDamage`、`ExplosionRadius`、`Velocity` 初速、`Burst`、`Spread`、`Cooldown` 来自服务端弹药定义；每个成功发出的弹丸消耗一枚。1.3.3 只改变航弹的释放规则，保留 1.3.2 的全部伤害参数。
+`Damage`、`ExplosionDamage`、`ExplosionRadius`、`Velocity` 初速、`Burst`、`Spread`、`Cooldown` 来自服务端弹药定义；每个成功发出的弹丸消耗一枚。1.3.4 在 1.3.2 当量基础上，仅对上述 10 种空空弹的爆炸伤害增加 0.5 倍平衡覆盖。
 
 “无投放散布”不等于强制命中；飞机速度、目标机动、地形、转向能力和照射状态仍会影响结果。低空巡航不会加载新区块，不提供横向迷宫寻路。具体边界见 [低空巡航](docs/低空巡航弹道.md)、[航弹散布](docs/航弹投放散布.md) 与 [当量换算](docs/弹药伤害与当量.md)。这些是游戏参数和简化规则，不宣称还原现实武器性能。
 
@@ -164,7 +169,7 @@ LoadoutApi.register(AmmoType.builder("mymod:my_missile")
 ```bash
 ./gradlew clean build
 ./gradlew -Pgametest runGameTestServer
-# 先构建相邻 sbw_radar 项目，再运行联合测试
+# 按空空适配文档构建相邻 sbw_radar 1.11.1 后运行联合测试
 ./gradlew -Pgametest -PradarCompat runGameTestServer
 ./gradlew -Pgametest -PsbwVersion=0.8.9.2 runGameTestServer
 ./gradlew -Pgametest -Psmoke runClient
@@ -174,6 +179,7 @@ LoadoutApi.register(AmmoType.builder("mymod:my_missile")
 ./gradlew -Pgametest -Pbombsmoke -PsbwVersion=0.8.9.2 runClient
 ./gradlew -Pgametest -Pthermalsmoke runClient
 ./gradlew -Pgametest -Pcruisesmoke runClient
+./gradlew -Pgametest -PradarCompat -Pairsmoke runClient
 ```
 
 Windows PowerShell 使用 `.\gradlew.bat`，版本参数建议写为 `'-PsbwVersion=0.8.9.2'`。每次只选择一种 `*smoke` 验收源集；它们会创建独立测试世界并自动退出客户端。`radarCompat` 需要相邻项目已构建对应 JAR。
@@ -191,6 +197,8 @@ python3 tools/validate_assets.py
 ```
 
 Python 工具需要 Pillow，OBJ 转换工具另需 numpy；Blender 脚本不调用减面操作。模型来源和授权记录见 [ASSET_SOURCES.md](ASSET_SOURCES.md)：代码采用 GPL-3.0-only，模型、贴图保留其原有权利和来源，不随代码许可证重新授权。
+
+1.3.4 最终验收：两个 SBW 版本各通过 74 项联合 GameTest、65 项挂载独立 GameTest 和 14 项真实客户端检查；雷达 1.11.1 另通过不安装挂载时的客户端启动检查。正式文件哈希及模型字节审计见 [1.3.4 校验](docs/release-checks-1.3.4.json)。
 
 ## 依赖关系
 

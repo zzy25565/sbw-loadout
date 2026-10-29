@@ -34,6 +34,17 @@ public final class RadarGuidance {
         .filter(n -> n.hasUUID("Source") && n.getUUID("Source").equals(launcher.getUUID())
             && !n.getBoolean("Terminal") && !n.getString("Phase").equals("DECOYED")).count();
   }
+  public static Set<UUID> assignedTargets(VehicleEntity launcher) {
+    Set<UUID> result = new HashSet<>();
+    for (Projectile p : TRACKED.keySet()) {
+      var n = p.getPersistentData().getCompound(SeekerController.KEY);
+      if (!p.isRemoved() && p.level()==launcher.level() && n.hasUUID("Source")
+          && n.getUUID("Source").equals(launcher.getUUID()) && n.hasUUID("Target")
+          && !n.getBoolean("Terminal") && !n.getString("Phase").equals("DECOYED"))
+        result.add(n.getUUID("Target"));
+    }
+    return result;
+  }
   public static int channelLimit(VehicleEntity v, AmmoType a) {
     int limit=a.radar().maxChannels();
     return RadarLink.provider()==null ? limit : Math.max(0,RadarLink.provider().maxChannels(v,limit));
@@ -114,7 +125,8 @@ public final class RadarGuidance {
     } else if(!n.getBoolean("Terminal") && launcher instanceof VehicleEntity v
         && owner instanceof ServerPlayer pilot && LoadoutService.pilot(pilot,v)) {
       AmmoType a=cn.zzy.loadout.api.LoadoutApi.get(n.getString("Ammo"));
-      Entity track=a==null ? null : RadarLocks.current(pilot,v,a);
+      Entity track=a==null || !n.hasUUID("Target") ? null
+          : RadarLocks.tracked(pilot,v,a,n.getUUID("Target"));
       if(track!=null && n.hasUUID("Target") && track.getUUID().equals(n.getUUID("Target"))) {
         point=track.getBoundingBox().getCenter(); found=true;
         n.putString("Phase","MIDCOURSE"); n.putString("Status","RADAR_MIDCOURSE");

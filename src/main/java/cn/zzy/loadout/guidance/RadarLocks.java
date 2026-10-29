@@ -24,7 +24,7 @@ public final class RadarLocks {
   public static Entity current(ServerPlayer p, VehicleEntity v, AmmoType a) {
     if (!LoadoutService.pilot(p,v) || SeekerMode.of(a.guidance()) != SeekerMode.RADAR) return null;
     Entity target;
-    if (RadarLink.provider() != null) target = RadarLink.provider().lockedTarget(v);
+    if (RadarLink.provider() != null) target = RadarLink.provider().launchTarget(v,a);
     else {
       Lock lock=LOCKS.get(p.getUUID());
       if(lock==null || !lock.vehicle.equals(v.getUUID()) || !lock.ammo.equals(a.id())
@@ -32,6 +32,13 @@ public final class RadarLocks {
       target=p.serverLevel().getEntity(lock.target);
     }
     return valid(p,v,a,target) ? target : null;
+  }
+
+  public static Entity tracked(ServerPlayer p, VehicleEntity v, AmmoType a, UUID assigned) {
+    if (!LoadoutService.pilot(p,v)) return null;
+    Entity target = RadarLink.provider() == null ? current(p,v,a)
+        : RadarLink.provider().trackedTarget(v,assigned);
+    return target != null && target.getUUID().equals(assigned) && valid(p,v,a,target) ? target : null;
   }
 
   public static boolean acquireCurrent(ServerPlayer p, UUID target, Vec3 point) {

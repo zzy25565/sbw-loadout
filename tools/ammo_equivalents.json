@@ -2,8 +2,21 @@
   "description": "游戏平衡用当量，单位为 kg TNT 等效；WT 参考值和暂定游戏估值分别标注，不作为现实武器性能表。",
   "reference_date": "2026-10-27",
   "baselines": {
-    "MK82": {"equivalent": 117.6, "damage": 650, "explosion_damage": 650, "radius": 22, "native_direct_damage": 0, "note": "原生 Mk82 独立直击为0；本附属以原生爆炸伤害650作为直击换算基数。"},
-    "AGM65": {"equivalent": 51.19, "damage": 1100, "explosion_damage": 180, "radius": 12, "note": "空对地及巡航导弹；当量映射选用 WT AGM-65A/B 参考值，SBW 未标具体子型。"}
+    "MK82": {
+      "equivalent": 117.6,
+      "damage": 650,
+      "explosion_damage": 650,
+      "radius": 22,
+      "native_direct_damage": 0,
+      "note": "原生 Mk82 独立直击为0；本附属以原生爆炸伤害650作为直击换算基数。"
+    },
+    "AGM65": {
+      "equivalent": 51.19,
+      "damage": 1100,
+      "explosion_damage": 180,
+      "radius": 12,
+      "note": "空对地及巡航导弹；当量映射选用 WT AGM-65A/B 参考值，SBW 未标具体子型。"
+    }
   },
   "sources": {
     "mk82": "https://wiki.warthunder.com/2471-the-f-15i-ra-am-bvr-master",
@@ -22,34 +35,203 @@
     "ls500j": "https://old-wiki.warthunder.com/index.php?diff=189838&printable=yes&title=Q-5L"
   },
   "ammo": {
-    "9m336_radar": {"equivalent": 1.0, "basis": "MK82", "status": "游戏估值", "note": "沿用本模组的游戏雷达弹身份，未将战斗部总重当作装药量。"},
-    "aim54a": {"equivalent": 60.54, "basis": "MK82", "status": "WT参考", "source": "aim54a"},
-    "aim54c": {"equivalent": 54.64, "basis": "MK82", "status": "WT参考", "source": "aim54c"},
-    "brimstone_dual": {"equivalent": 1.8, "basis": "AGM65", "status": "游戏估值", "note": "小型串联战斗部游戏估值。"},
-    "fx1400": {"equivalent": 320, "basis": "MK82", "status": "WT参考", "source": "fx1400"},
-    "gbu31": {"equivalent": 578.6, "basis": "MK82", "status": "同弹体映射", "source": "mk82", "note": "采用普通 Mk84 弹体的游戏当量；不代表 BLU-109 等其他子型。"},
-    "gbu38": {"equivalent": 117.6, "basis": "MK82", "status": "同弹体映射", "source": "mk82", "note": "采用 Mk82 弹体，1倍基准。"},
-    "gbu53b": {"equivalent": 12, "basis": "MK82", "status": "游戏估值", "note": "小直径炸弹暂定平衡值，不使用全弹重或战斗部总重。"},
-    "gbu58": {"equivalent": 60, "basis": "MK82", "status": "游戏估值", "note": "小型炸弹暂定平衡值。"},
-    "kab1500kr": {"equivalent": 700, "basis": "MK82", "status": "游戏估值", "note": "未确认具体战斗部子型，暂与同级 KAB-1500L 共用游戏估值。"},
-    "kab1500l": {"equivalent": 700, "basis": "MK82", "status": "游戏估值", "note": "未确认具体战斗部子型，非1500kg全弹重。"},
-    "kab500kr": {"equivalent": 160, "basis": "MK82", "status": "WT参考", "source": "kab500kr"},
-    "kab500l": {"equivalent": 312, "basis": "MK82", "status": "WT参考", "source": "kab500l"},
-    "kh29l": {"equivalent": 186.24, "basis": "AGM65", "status": "WT参考", "source": "kh29"},
-    "kh29l_wt": {"equivalent": 186.24, "basis": "AGM65", "status": "WT参考", "source": "kh29", "note": "与同名 Kh29L 仅模型不同，威力一致。"},
-    "kh29td": {"equivalent": 186.24, "basis": "AGM65", "status": "WT参考", "source": "kh29"},
-    "kh38mt": {"equivalent": 152, "basis": "AGM65", "status": "WT参考", "source": "kh38"},
-    "kh59mk": {"equivalent": 200, "basis": "AGM65", "status": "游戏估值", "note": "巡航导弹暂定平衡值，未将战斗部总重等同于装药当量。"},
-    "ls500j": {"equivalent": 220, "basis": "MK82", "status": "WT参考", "source": "ls500j"},
-    "pl12": {"equivalent": 11.78, "basis": "MK82", "status": "WT参考", "source": "pl12"},
-    "pl12a": {"equivalent": 11.78, "basis": "MK82", "status": "同系列估值", "source": "pl12", "note": "未核实独立战斗部数据，暂与 PL12 相同。"},
-    "r40rd": {"equivalent": 55, "basis": "MK82", "status": "游戏估值", "note": "重型空空导弹暂定平衡值。"},
-    "r40td": {"equivalent": 55, "basis": "MK82", "status": "游戏估值", "note": "同系列两种导引头共用估值。"},
-    "r73": {"equivalent": 5.96, "basis": "MK82", "status": "WT参考", "source": "r73"},
-    "r73l": {"equivalent": 5.96, "basis": "MK82", "status": "同系列估值", "source": "r73", "note": "未核实独立战斗部数据，暂与 R73 相同。"},
-    "r77": {"equivalent": 15.56, "basis": "MK82", "status": "WT参考", "source": "r77"},
-    "r77_1": {"equivalent": 15.56, "basis": "MK82", "status": "同系列估值", "source": "r77", "note": "未核实独立战斗部数据，暂与 R77 相同。"},
-    "spice1000": {"equivalent": 272.4, "basis": "MK82", "status": "WT参考", "source": "spice1000"},
-    "x555": {"equivalent": 300, "basis": "AGM65", "status": "游戏估值", "note": "仅指本模组常规巡航弹的游戏估值。"}
+    "9m336_radar": {
+      "equivalent": 1.0,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "沿用本模组的游戏雷达弹身份，未将战斗部总重当作装药量。"
+    },
+    "aim54a": {
+      "equivalent": 60.54,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "aim54a"
+    },
+    "aim54c": {
+      "equivalent": 54.64,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "aim54c"
+    },
+    "brimstone_dual": {
+      "equivalent": 1.8,
+      "basis": "AGM65",
+      "status": "游戏估值",
+      "note": "小型串联战斗部游戏估值。"
+    },
+    "fx1400": {
+      "equivalent": 320,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "fx1400"
+    },
+    "gbu31": {
+      "equivalent": 578.6,
+      "basis": "MK82",
+      "status": "同弹体映射",
+      "source": "mk82",
+      "note": "采用普通 Mk84 弹体的游戏当量；不代表 BLU-109 等其他子型。"
+    },
+    "gbu38": {
+      "equivalent": 117.6,
+      "basis": "MK82",
+      "status": "同弹体映射",
+      "source": "mk82",
+      "note": "采用 Mk82 弹体，1倍基准。"
+    },
+    "gbu53b": {
+      "equivalent": 12,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "小直径炸弹暂定平衡值，不使用全弹重或战斗部总重。"
+    },
+    "gbu58": {
+      "equivalent": 60,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "小型炸弹暂定平衡值。"
+    },
+    "kab1500kr": {
+      "equivalent": 700,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "未确认具体战斗部子型，暂与同级 KAB-1500L 共用游戏估值。"
+    },
+    "kab1500l": {
+      "equivalent": 700,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "未确认具体战斗部子型，非1500kg全弹重。"
+    },
+    "kab500kr": {
+      "equivalent": 160,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "kab500kr"
+    },
+    "kab500l": {
+      "equivalent": 312,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "kab500l"
+    },
+    "kh29l": {
+      "equivalent": 186.24,
+      "basis": "AGM65",
+      "status": "WT参考",
+      "source": "kh29"
+    },
+    "kh29l_wt": {
+      "equivalent": 186.24,
+      "basis": "AGM65",
+      "status": "WT参考",
+      "source": "kh29",
+      "note": "与同名 Kh29L 仅模型不同，威力一致。"
+    },
+    "kh29td": {
+      "equivalent": 186.24,
+      "basis": "AGM65",
+      "status": "WT参考",
+      "source": "kh29"
+    },
+    "kh38mt": {
+      "equivalent": 152,
+      "basis": "AGM65",
+      "status": "WT参考",
+      "source": "kh38"
+    },
+    "kh59mk": {
+      "equivalent": 200,
+      "basis": "AGM65",
+      "status": "游戏估值",
+      "note": "巡航导弹暂定平衡值，未将战斗部总重等同于装药当量。"
+    },
+    "ls500j": {
+      "equivalent": 220,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "ls500j"
+    },
+    "pl12": {
+      "equivalent": 11.78,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "pl12"
+    },
+    "pl12a": {
+      "equivalent": 11.78,
+      "basis": "MK82",
+      "status": "同系列估值",
+      "source": "pl12",
+      "note": "未核实独立战斗部数据，暂与 PL12 相同。"
+    },
+    "r40rd": {
+      "equivalent": 55,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "重型空空导弹暂定平衡值。"
+    },
+    "r40td": {
+      "equivalent": 55,
+      "basis": "MK82",
+      "status": "游戏估值",
+      "note": "同系列两种导引头共用估值。"
+    },
+    "r73": {
+      "equivalent": 5.96,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "r73"
+    },
+    "r73l": {
+      "equivalent": 5.96,
+      "basis": "MK82",
+      "status": "同系列估值",
+      "source": "r73",
+      "note": "未核实独立战斗部数据，暂与 R73 相同。"
+    },
+    "r77": {
+      "equivalent": 15.56,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "r77"
+    },
+    "r77_1": {
+      "equivalent": 15.56,
+      "basis": "MK82",
+      "status": "同系列估值",
+      "source": "r77",
+      "note": "未核实独立战斗部数据，暂与 R77 相同。"
+    },
+    "spice1000": {
+      "equivalent": 272.4,
+      "basis": "MK82",
+      "status": "WT参考",
+      "source": "spice1000"
+    },
+    "x555": {
+      "equivalent": 300,
+      "basis": "AGM65",
+      "status": "游戏估值",
+      "note": "仅指本模组常规巡航弹的游戏估值。"
+    }
+  },
+  "balance_overrides": {
+    "air_to_air": {
+      "ids": [
+        "aim54a",
+        "aim54c",
+        "pl12",
+        "pl12a",
+        "r40rd",
+        "r40td",
+        "r73",
+        "r73l",
+        "r77",
+        "r77_1"
+      ],
+      "explosion_damage_multiplier": 0.5,
+      "note": "1.3.4 用户要求：10种空空弹爆炸伤害为 1.3.3 的 50%；直击和半径不变，9M336既有参数保留。"
+    }
   }
 }

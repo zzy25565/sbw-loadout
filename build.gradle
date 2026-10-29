@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.80'
 }
 group = 'cn.zzy'
-version = '1.3.3'
+version = '1.3.4'
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 repositories { mavenCentral(); maven { url = 'https://thedarkcolour.github.io/KotlinForForge/' } }
 neoForge {
@@ -19,6 +19,19 @@ if (project.hasProperty('gametest')) {
     sourceSets.main.java.srcDir('src/gametest/java')
     sourceSets.main.resources.srcDir('src/gametest/resources')
 }
+if (project.hasProperty('airsmoke')) {
+    neoForge.runs.named('client') {
+        jvmArgument '-Dsbw.airSmoke=true'
+        programArgument '--width'; programArgument '1280'
+        programArgument '--height'; programArgument '800'
+    }
+}
+if (project.hasProperty('testWorld')) {
+    neoForge.runs.named('gameTestServer') {
+        programArgument '--universe'; programArgument file('validation/test-worlds').absolutePath
+        programArgument '--world'; programArgument project.property('testWorld').toString()
+    }
+}
 if (project.hasProperty('guidancesmoke')) sourceSets.main.java.srcDir('src/guidancesmoke/java')
 if (project.hasProperty('smoke')) sourceSets.main.java.srcDir('src/smoke/java')
 if (project.hasProperty('modelsmoke')) sourceSets.main.java.srcDir('src/modelsmoke/java')
@@ -32,9 +45,22 @@ dependencies {
     runtimeOnly files('libs/superbwarfare-' + providers.gradleProperty('sbwVersion').getOrElse('0.8.9.1') + '.jar')
 }
 if(project.hasProperty('radarCompat')) {
- dependencies { runtimeOnly files('../sbw_radar/build/libs/sbw_radar-1.3.0.jar') }
+ sourceSets.main.java.srcDir('src/radarcompat/java')
+ dependencies {
+  compileOnly files('../sbw_radar/build/libs/sbw_radar-1.11.1.jar')
+  runtimeOnly files('../sbw_radar/build/libs/sbw_radar-1.11.1.jar')
+ }
 }
 if(project.hasProperty('sporeCompat')) {
  dependencies { runtimeOnly files('../../work/spore_220_20260330/build/libs/spore-1.0.0.jar') }
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+// Optional helper for rebuilding the adjacent radar project with this verified dev runtime.
+tasks.register('exportCompileClasspath') {
+    dependsOn 'createMinecraftArtifacts'
+    doLast {
+        file('build/radar-compile-classpath.txt').text = configurations.compileClasspath.files
+            .collect { it.absolutePath }.join('\n')
+    }
+}

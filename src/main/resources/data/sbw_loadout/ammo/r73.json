@@ -1,6 +1,6 @@
 {
   "DisplayName": "R-73 红外导弹",
-  "Category": "Missile",
+  "Category": "AirToAirMissile",
   "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/r73.png",
   "Model": "sbw_loadout:models/bedrock/ammo/wt_review/r73.geo.json",
   "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
@@ -8,7 +8,7 @@
   "Slots": 1,
   "Projectile": "superbwarfare:ru_9m336_missile",
   "Damage": 32.94,
-  "ExplosionDamage": 32.94,
+  "ExplosionDamage": 16.47,
   "ExplosionRadius": 8.141,
   "Velocity": 2.6,
   "Burst": 1,

@@ -302,6 +302,17 @@ public final class LoadoutService {
         targetPos = ray.getLocation();
     }
     if (a.guidance().equalsIgnoreCase("IR") && target == null) targetPos = null;
+    Entity infraredTarget = null;
+    var radarProvider = RadarLink.provider();
+    if (a.category().equalsIgnoreCase("AirToAirMissile") && a.guidance().equalsIgnoreCase("IR")
+        && radarProvider != null && radarProvider.hasInfraredControl()) {
+      infraredTarget = radarProvider.infraredTarget(v);
+      if (!RadarLocks.valid(p,v,a,infraredTarget)) {
+        message(p,"红外导引头未取得有效目标，未消耗弹药");
+        return;
+      }
+      target=infraredTarget.getUUID();targetPos=infraredTarget.getBoundingBox().getCenter();
+    }
     if (a.guidance().equalsIgnoreCase("None")) {
       target = null;
       targetPos = null;
@@ -310,7 +321,7 @@ public final class LoadoutService {
     if (seekerMode == SeekerMode.RADAR) {
       radarTarget = RadarLocks.current(p, v, a);
       if (radarTarget == null && !bomb) {
-        message(p, "雷达未锁定：使用 TRK，或独立安装时按 K 锁定，未消耗弹药");
+        message(p, "雷达未锁定：使用 TRK / TWS 有效航迹，或独立安装时按 K 锁定，未消耗弹药");
         return;
       }
       if (radarTarget != null && !RadarGuidance.canLaunch(v, a)) {
@@ -414,6 +425,8 @@ public final class LoadoutService {
       if (radarTarget != null)
         RadarGuidance.arm(projectile,p,v,radarTarget,a);
       if (level.addFreshEntity(projectile)) {
+        if (infraredTarget != null)
+          radarProvider.infraredLaunched(projectile,p,v,infraredTarget,a);
         if (!infinite(p)) s.entries.removeFirst();
         shots++;
       } else projectile.discard();

@@ -7,6 +7,15 @@ import net.minecraft.world.entity.Entity;
 public final class RadarLink {
   public interface Provider {
     Entity lockedTarget(VehicleEntity launcher);
+    default Entity launchTarget(VehicleEntity launcher, AmmoType ammo) { return lockedTarget(launcher); }
+    default Entity trackedTarget(VehicleEntity launcher, java.util.UUID assigned) {
+      Entity target = lockedTarget(launcher);
+      return target != null && target.getUUID().equals(assigned) ? target : null;
+    }
+    default boolean hasInfraredControl() { return false; }
+    default Entity infraredTarget(VehicleEntity launcher) { return null; }
+    default void infraredLaunched(net.minecraft.world.entity.projectile.Projectile projectile,
+        net.minecraft.server.level.ServerPlayer owner, VehicleEntity launcher, Entity target, AmmoType ammo) {}
     default int otherChannels(VehicleEntity launcher) { return 0; }
     default int maxChannels(VehicleEntity launcher, int ammoLimit) { return ammoLimit; }
   }

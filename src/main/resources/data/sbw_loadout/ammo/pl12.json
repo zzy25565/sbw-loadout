@@ -1,6 +1,6 @@
 {
   "DisplayName": "PL-12（游戏雷达制导）",
-  "Category": "Missile",
+  "Category": "AirToAirMissile",
   "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/pl12.png",
   "Model": "sbw_loadout:models/bedrock/ammo/wt_review/pl12.geo.json",
   "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
@@ -8,7 +8,7 @@
   "Slots": 1,
   "Projectile": "sbw_loadout:9m336_radar",
   "Damage": 65.11,
-  "ExplosionDamage": 65.11,
+  "ExplosionDamage": 32.555,
   "ExplosionRadius": 10.217,
   "Velocity": 2.6,
   "Burst": 1,

@@ -114,7 +114,7 @@ public final class GuidanceClient {
     if(j.has("seeker") && SeekerMode.of(j.get("seeker").getAsString())==SeekerMode.RADAR) {
       boolean locked=j.get("radar_locked").getAsBoolean();
       text=locked ? "RADAR 已锁定 · "+j.get("radar_target").getAsString()
-          : (j.get("radar_external").getAsBoolean() ? "RADAR 未锁定 · 使用雷达 TRK" : "RADAR 未锁定 · K 锁定实体目标");
+          : (j.get("radar_external").getAsBoolean() ? "RADAR 未锁定 · 使用雷达 TRK / TWS" : "RADAR 未锁定 · K 锁定实体目标");
       text+=" · 通道 "+j.get("radar_channels").getAsInt()+"/"+j.get("radar_limit").getAsInt();
       color=locked ? 0x77ff99 : 0xffcc77;
     }
@@ -126,6 +126,11 @@ public final class GuidanceClient {
           : "普通投放 · " + (scattered ? "有随机散布" : "无额外散布") + " · "
               + (laser ? "F6 后 L 激光照射" : "K / F6 锁定");
       color = guided ? 0x77ff99 : 0xffcc77;
+    }
+    if(j.has("ir_air_to_air") && j.get("ir_air_to_air").getAsBoolean()) {
+      boolean locked=j.get("ir_locked").getAsBoolean();
+      text=locked ? "IR 已锁定 · "+j.get("ir_target").getAsString() : "IR 未锁定 · 对准有效热目标";
+      color=locked ? 0x77ff99 : 0xffcc77;
     }
     if (text != null)
       e.getGuiGraphics()

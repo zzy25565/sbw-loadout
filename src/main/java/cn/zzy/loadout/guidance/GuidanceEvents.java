@@ -69,6 +69,14 @@ public final class GuidanceEvents {
           if (SeekerMode.of(a.guidance())==SeekerMode.RADAR) {
             EntityRadarSnapshot.fill(j,p,v,a);
           }
+          if (a.category().equalsIgnoreCase("AirToAirMissile") && a.guidance().equalsIgnoreCase("IR")
+              && cn.zzy.loadout.api.RadarLink.provider()!=null
+              && cn.zzy.loadout.api.RadarLink.provider().hasInfraredControl()) {
+            var ir=cn.zzy.loadout.api.RadarLink.provider().infraredTarget(v);
+            boolean locked=RadarLocks.valid(p,v,a,ir);
+            j.addProperty("ir_air_to_air",true);j.addProperty("ir_locked",locked);
+            if(locked) j.addProperty("ir_target",ir.getName().getString());
+          }
           var lock = TelevisionLocks.current(p, v, a);
           j.addProperty("tv_locked", lock != null);
           if (lock != null) {

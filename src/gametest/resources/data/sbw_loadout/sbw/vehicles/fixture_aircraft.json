@@ -38,11 +38,24 @@
       "sbw_loadout:kab1500l",
       "sbw_loadout:kab500l",
       "sbw_loadout:ls500j",
-      "sbw_loadout:spice1000"
+      "sbw_loadout:spice1000",
+      "sbw_loadout:aim54a",
+      "sbw_loadout:aim54c",
+      "sbw_loadout:pl12",
+      "sbw_loadout:pl12a",
+      "sbw_loadout:r40rd",
+      "sbw_loadout:r40td",
+      "sbw_loadout:r73",
+      "sbw_loadout:r73l",
+      "sbw_loadout:r77",
+      "sbw_loadout:r77_1"
     ],
     "Default": [
       "sbw_loadout:kh38mt"
     ]
   },
-  "Gravity": 0
+  "Gravity": 0,
+  "HasDecoy": true,
+  "DecoyMagazineSize": 8,
+  "VehicleContainerType": "Small"
 }

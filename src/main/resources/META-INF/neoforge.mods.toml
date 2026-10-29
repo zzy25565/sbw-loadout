@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="GPL-3.0-only; assets see ASSET_SOURCES.md"
 [[mods]]
 modId="sbw_loadout"
-version="1.3.3"
+version="1.3.4"
 displayName="SBW Custom Loadout"
 description="Data driven aircraft loadouts with transactional inventory editing and full detail ammo models."
 [[mixins]]
@@ -12,6 +12,12 @@ config="sbw_loadout.mixins.json"
 modId="neoforge"
 type="required"
 versionRange="[21.1.240,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sbw_loadout]]
+modId="sbw_radar"
+type="optional"
+versionRange="[1.11.1,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.sbw_loadout]]

@@ -1,6 +1,6 @@
 {
   "DisplayName": "AIM-54A（游戏雷达制导）",
-  "Category": "Missile",
+  "Category": "AirToAirMissile",
   "Icon": "sbw_loadout:textures/overlay/weapon/icons/wt_review/aim54a.png",
   "Model": "sbw_loadout:models/bedrock/ammo/wt_review/aim54a.geo.json",
   "Texture": "sbw_loadout:textures/bedrock/ammo/wt_review/neutral.png",
@@ -8,7 +8,7 @@
   "Slots": 1,
   "Projectile": "sbw_loadout:9m336_radar",
   "Damage": 334.62,
-  "ExplosionDamage": 334.62,
+  "ExplosionDamage": 167.31,
   "ExplosionRadius": 17.632,
   "Velocity": 2.6,
   "Burst": 1,

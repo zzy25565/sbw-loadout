@@ -51,7 +51,7 @@ public final class RadarGameTests {
   static RadarLink.Provider track(Setup s) { return v->v==s.v ? s.target : null; }
   static void check(GameTestHelper h,boolean b,String text) { h.assertTrue(b,text); }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void noLockAndForgedTargetDoNotSpend(GameTestHelper h) {
     var s=setup(h,1,16);
     scoped(null,()-> {
@@ -64,7 +64,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void externalTrackIsAuthoritative(GameTestHelper h) {
     var s=setup(h,1,16);
     scoped(v->null,()-> {
@@ -79,7 +79,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void boostMidcourseAndTerminalAreSeparate(GameTestHelper h) {
     var s=setup(h,1,130);
     final Projectile[] launched={null};
@@ -88,10 +88,13 @@ public final class RadarGameTests {
       LoadoutService.fire(s.p,s.v,null,null);launched[0]=shots(s).getFirst();
       var p=launched[0];var n=p.getPersistentData().getCompound(SeekerController.KEY);
       RadarGuidance.tick(p);check(h,n.getString("Phase").equals("BOOST"),"illumination-axis boost");
+      // 其他并行测试的敌对夹具不应触发本用例的提前末段搜索。
+      n.putDouble("TerminalRange",1);
       n.putInt("Age",s.ammo.radar().climbTicks());RadarGuidance.tick(p);
       check(h,n.getString("Phase").equals("MIDCOURSE"),"radar midcourse outside terminal range: phase="+n.getString("Phase")+" target="+n.getUUID("Target")+" expected="+s.target.getUUID());
-      p.setPos(s.target.position().add(0,0,-30));p.setDeltaMovement(0,0,2);RadarGuidance.tick(p);
-      check(h,n.getBoolean("Terminal"),"terminal handoff within seeker range");
+      n.putDouble("TerminalRange",s.ammo.radar().terminalRange());
+      s.target.setPos(p.position().add(0,0,30));p.setDeltaMovement(0,0,2);RadarGuidance.tick(p);
+      check(h,n.getBoolean("Terminal"),"terminal handoff within seeker range: alive="+s.target.isAlive()+" position="+p.position()+" target="+s.target.position()+" visible="+AimSupport.visible(h.getLevel(),p,p.position(),s.target.getBoundingBox().getCenter())+" cone="+AimSupport.inCone(p.position(),p.getDeltaMovement(),s.target.getBoundingBox().getCenter(),96,35));
     });
     s.p.stopRiding();
     scoped(v->null,()-> {
@@ -101,7 +104,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void channelsReleaseAtHandoff(GameTestHelper h) {
     var s=setup(h,3,130);
     scoped(track(s),()-> {
@@ -110,6 +113,8 @@ public final class RadarGameTests {
       LoadoutService.fire(s.p,s.v,null,null);
       check(h,shots(s).size()==2 && LoadoutService.state(s.v).entries.size()==1,"full channels reject without spending");
       var p=shots(s).getFirst();p.setPos(s.target.position().add(0,0,-30));p.setDeltaMovement(0,0,2);
+      // 保持已加入世界的弹体留在原生实体可见区块内，用移动目标模拟进入末段距离。
+      p.setPos(LoadoutService.launchOrigin(s.v));s.target.setPos(p.position().add(0,0,30));
       p.getPersistentData().getCompound(SeekerController.KEY).putInt("Age",12);RadarGuidance.tick(p);
       check(h,RadarGuidance.activeFor(s.v)==1,"terminal frees illumination channel");
       LoadoutService.fire(s.p,s.v,null,null);
@@ -117,7 +122,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void chaffSurvivesSaveAndDoesNotReacquire(GameTestHelper h) {
     var s=setup(h,1,16);
     scoped(track(s),()-> {
@@ -133,7 +138,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void friendlyAndOccludedLocksRejected(GameTestHelper h) {
     var s=setup(h,1,16);
     scoped(null,()-> {
@@ -147,7 +152,7 @@ public final class RadarGameTests {
     });h.succeed();
   }
 
-  @GameTest(template="empty")
+  @GameTest(template="empty",batch="radar")
   public static void dataFormatAndRadarSettingsRoundTrip(GameTestHelper h) {
     var a=LoadoutApi.get(ID);
     check(h,a!=null && a.equals(AmmoType.parse(a.id(),a.json())),"radar settings sync round trip");
